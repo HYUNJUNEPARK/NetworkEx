@@ -27,6 +27,11 @@ class MainActivity : AppCompatActivity() {
                 binding.isToken = "O"
             }
         }
+
+        sharedViewModel.membershipIdAndGrade.observe(this@MainActivity) { it ->
+            val result = "${it.userId},${it.grade}.${it.loginId}"
+            binding.testResult = result
+        }
     }
 
     fun onRequestTokenButtonClicked() {
@@ -50,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onButton2Clicked() {
-        Toast.makeText(this, "2", Toast.LENGTH_SHORT).show()
+        sharedViewModel.requestMembershipIdAndGrade("japark7@konai.com")
     }
 
     fun onButton3Clicked() {

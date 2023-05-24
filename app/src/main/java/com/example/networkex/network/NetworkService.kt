@@ -14,7 +14,7 @@ interface NetworkService {
     ): Call<Any>
 
     @GET("${USER_ID}/{id}")
-    fun getUserId(
+    fun getUserMembershipId(
         @Path("id")
         id : String
     ): Call<Any>
