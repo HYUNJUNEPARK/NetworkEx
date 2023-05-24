@@ -9,7 +9,7 @@ import com.example.networkex.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val sharedViewModel: MainViewModel by viewModels() //TODO SharedViewModel
+    private val sharedViewModel: MainViewModel by viewModels ()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +30,15 @@ class MainActivity : AppCompatActivity() {
 
         sharedViewModel.membershipIdAndGrade.observe(this@MainActivity) { it ->
             val result = "${it.userId}, ${it.grade}, ${it.loginId}"
-            binding.testResult = result
+            binding.membershipIdAndGrade = result
         }
         
         sharedViewModel.responseState.observe(this@MainActivity) { it ->
             Toast.makeText(this, "${it.name}", Toast.LENGTH_SHORT).show()
+        }
+
+        sharedViewModel.membershipPoint.observe(this@MainActivity) {
+            binding.membershipPoint = it
         }
     }
 
@@ -63,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onButton3Clicked() {
-        Toast.makeText(this, "3", Toast.LENGTH_SHORT).show()
+        sharedViewModel.requestCardPoint("50001027812")
     }
 
     companion object {

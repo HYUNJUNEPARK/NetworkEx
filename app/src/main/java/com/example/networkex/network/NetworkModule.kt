@@ -2,7 +2,6 @@ package com.example.networkex.network
 
 import com.example.networkex.MainViewModel.Companion.ACCESS_TOKEN
 import com.example.networkex.const.HeaderConst.ACCESS_TOKEN_BASIC
-import com.example.networkex.const.HeaderConst.ACCESS_TOKEN_TMP
 import com.example.networkex.const.HeaderConst.ASP_NAME
 import com.example.networkex.const.HeaderConst.ASP_VALUE
 import com.example.networkex.const.HeaderConst.AUTHORIZATION_NAME

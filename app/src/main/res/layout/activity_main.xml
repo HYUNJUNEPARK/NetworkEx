@@ -19,9 +19,12 @@
             name="isToken"
             type="String" />
 
+        <variable
+            name="membershipIdAndGrade"
+            type="String" />
 
         <variable
-            name="testResult"
+            name="membershipPoint"
             type="String" />
     </data>
 
@@ -95,7 +98,8 @@
                 android:layout_gravity="center"
                 android:layout_marginVertical="10dp"
                 android:onClick="@{()->mainActivity.onRequestTokenButtonClicked()}"
-                android:text="RequestToken" />
+                android:text="RequestToken"
+                android:textAllCaps="false" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -103,10 +107,25 @@
                 android:layout_gravity="center"
                 android:layout_marginVertical="10dp"
                 android:onClick="@{()->mainActivity.onButton2Clicked()}"
-                android:text="Test1" />
+                android:text="RequestMembershipIdAndGrade"
+                android:textAllCaps="false" />
 
             <TextView
-                android:text="@{testResult}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{membershipIdAndGrade}" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:layout_marginVertical="10dp"
+                android:onClick="@{()->mainActivity.onButton3Clicked()}"
+                android:text="RequestMembershipPoint" />
+
+            <TextView
+                android:text="@{membershipPoint}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
