@@ -16,21 +16,25 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.mainActivity = this@MainActivity
 
+        if (sharedViewModel.accessToken.value.isNullOrEmpty()) binding.isToken = "X"
+
         sharedViewModel.isLoading.observe(this@MainActivity) { isLoading ->
             binding.isLoading = isLoading
         }
 
         sharedViewModel.accessToken.observe(this@MainActivity) { accessToken ->
-            if (accessToken.isNullOrEmpty()) {
-                binding.isToken = "X"
-            } else {
+            if (accessToken.isNotEmpty()) {
                 binding.isToken = "O"
             }
         }
 
         sharedViewModel.membershipIdAndGrade.observe(this@MainActivity) { it ->
-            val result = "${it.userId},${it.grade}.${it.loginId}"
+            val result = "${it.userId}, ${it.grade}, ${it.loginId}"
             binding.testResult = result
+        }
+        
+        sharedViewModel.responseState.observe(this@MainActivity) { it ->
+            Toast.makeText(this, "${it.name}", Toast.LENGTH_SHORT).show()
         }
     }
 
