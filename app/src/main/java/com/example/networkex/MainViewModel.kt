@@ -47,7 +47,7 @@ class MainViewModel: CoreServerBaseViewModel() {
             }
             else -> {
                 endLoading()
-                _responseState.postValue(ResponseState.NOT_200_CODE)
+                _responseState.postValue(ResponseState.NOT_CODE_200)
             }
         }
     }
@@ -73,7 +73,7 @@ class MainViewModel: CoreServerBaseViewModel() {
             }
             else -> {
                 endLoading()
-                _responseState.postValue(ResponseState.NOT_200_CODE)
+                _responseState.postValue(ResponseState.NOT_CODE_200)
             }
         }
     }
@@ -96,7 +96,7 @@ class MainViewModel: CoreServerBaseViewModel() {
             }
             else ->{
                 endLoading()
-                _responseState.postValue(ResponseState.NOT_200_CODE)
+                _responseState.postValue(ResponseState.NOT_CODE_200)
             }
         }
     }

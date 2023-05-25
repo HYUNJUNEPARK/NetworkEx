@@ -7,16 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.example.networkex.databinding.FragmentA1Binding
+import com.example.networkex.databinding.FragmentB1Binding
 
-
-class FragmentA1 : Fragment() {
-    private var _binding : FragmentA1Binding? = null
+class FragmentB1 : Fragment() {
+    private var _binding: FragmentB1Binding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_a1, container, false)
-        binding.fragmentA1 = this@FragmentA1
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_b1, container, false)
+        binding.fragmentB1 = this@FragmentB1
         return binding.root
     }
 
@@ -25,7 +24,7 @@ class FragmentA1 : Fragment() {
         _binding = null
     }
 
-    fun onA1ButtonClicked() {
-        Toast.makeText(requireContext(), "FragmentA1", Toast.LENGTH_SHORT).show()
+    fun onB1ButtonClicked() {
+        Toast.makeText(requireContext(), "B1", Toast.LENGTH_SHORT).show()
     }
 }

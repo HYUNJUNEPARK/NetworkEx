@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="fragmentA1"
             type="com.example.networkex.FragmentA1" />
@@ -12,22 +13,22 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
         tools:context=".FragmentA1">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="1dp"
             app:strokeColor="@color/gray"
             app:strokeWidth="1dp">
 
             <LinearLayout
-                android:padding="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"

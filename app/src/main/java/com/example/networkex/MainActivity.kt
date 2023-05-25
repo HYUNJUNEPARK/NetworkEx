@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.networkex.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -40,10 +41,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.beginTransaction().apply {
-            add(R.id.fragment_container_a2, FragmentA2())
             add(R.id.fragment_container_a1, FragmentA1())
+            add(R.id.fragment_container_a2, FragmentA2())
+            add(R.id.fragment_container_b, FragmentB1())
             commit()
         }
+
+
 
     }
 
