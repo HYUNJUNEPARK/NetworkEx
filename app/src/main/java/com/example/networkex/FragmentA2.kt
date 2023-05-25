@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.example.networkex.databinding.FragmentA2Binding
+import com.example.networkex.vm.FragmentAViewModel
 
 class FragmentA2 : Fragment() {
     private var _binding: FragmentA2Binding? = null
     private val binding get() = _binding!!
+    private val fragmentViewModel: FragmentAViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_a2, container, false)
@@ -25,6 +28,7 @@ class FragmentA2 : Fragment() {
     }
 
     fun onA2ButtonClicked() {
-        Toast.makeText(requireContext(), "A2", Toast.LENGTH_SHORT).show()
+
+        Toast.makeText(requireContext(), "FragmentA VM LiveDate : ${fragmentViewModel.membershipIdAndGrade.value?.userId}", Toast.LENGTH_SHORT).show()
     }
 }

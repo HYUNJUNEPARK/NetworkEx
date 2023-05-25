@@ -8,6 +8,10 @@
         <variable
             name="fragmentA2"
             type="com.example.networkex.FragmentA2" />
+
+        <variable
+            name="liveDataFVM"
+            type="String" />
     </data>
 
     <FrameLayout
@@ -27,20 +31,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:padding="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="FragmentA2" />
+
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textAllCaps="false"
+                    android:layout_gravity="center"
                     android:onClick="@{()->fragmentA2.onA2ButtonClicked()}"
-                    android:text="A2" />
+                    android:text="FragmentA1 VM LiveData" />
+
+
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
