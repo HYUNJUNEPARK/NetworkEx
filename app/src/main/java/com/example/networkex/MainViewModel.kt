@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.networkex.enums.ResponseState
 import com.example.networkex.model.MisResponseAuthToken
 import com.example.networkex.model.MisResponseBodyUserId
+import com.example.networkex.model.SelfResponseBody04
 import com.example.networkex.model.UserIdResult
 import com.example.networkex.util.CoreServerBaseViewModel
 import com.konai.mis_apitester.network.model.api.tmp.KonaCardResponseBodyPointInfo
@@ -31,6 +32,9 @@ class MainViewModel: CoreServerBaseViewModel() {
 
     private var _membershipPoint = MutableLiveData<String>()
     val membershipPoint : LiveData<String> get() = _membershipPoint
+
+    private var _paymentMethod = MutableLiveData<String>()
+    val paymentMethod : LiveData<String> get() = _paymentMethod
 
     //API
     fun requestAccessToken(userId: String, pwd: String, deviceId: String, pushToken: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
@@ -111,6 +115,24 @@ class MainViewModel: CoreServerBaseViewModel() {
             responseData!!.userId
         }
         requestCardPointEx1(membershipId!!)
+    }
+
+    fun requestSelf04(mdn: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
+        startLoading()
+        val response = networkManager.requestSelf04(mdn)
+        when(response.code()) {
+            200 -> {
+                endLoading()
+                val responseBody = gson.toJson(response.body())
+                val responseData = gson.fromJson(responseBody, SelfResponseBody04::class.java) ?: return@launch //TODO 예외처리 필요
+                val paymentMethod = responseData.body?.first()?.data?.pymMthdNm
+                _paymentMethod.postValue(paymentMethod!!)
+            }
+            else -> {
+                endLoading()
+                _responseState.postValue(ResponseState.NOT_CODE_200)
+            }
+        }
     }
 
     //func

@@ -1,6 +1,11 @@
 package com.example.networkex.network
 
+import com.example.networkex.const.ApiConst.SELF04_CODE
+import com.example.networkex.const.ApiConst.SELF04_HEADER_MSG_TYPE
 import com.example.networkex.model.KonaCardRequestBodyUserId
+import com.example.networkex.model.SelfRequestBody
+import com.example.networkex.model.SelfRequestInnerBody
+import com.example.networkex.model.SelfRequestInnerHeader
 import com.example.networkex.network.NetworkModule.commonInterceptor
 import com.example.networkex.network.NetworkModule.konaCardInterceptor
 import com.example.networkex.network.NetworkModule.misAuthInterceptor
@@ -39,5 +44,17 @@ class NetworkManager {
     fun requestMembershipIdAndGrade(userId: String): Response<Any> {
         val networkService: NetworkService = provideRetrofit(commonInterceptor).create(NetworkService::class.java)
         return networkService.getUserMembershipId(userId).execute()
+    }
+
+    //SELF CARE
+    //납부 방법 조회
+    fun requestSelf04(mdn: String): Response<Any> {
+        val networkService: NetworkService = provideRetrofit(commonInterceptor).create(NetworkService::class.java)
+        return networkService.selfcareV1(
+            SelfRequestBody(
+                header = arrayListOf(SelfRequestInnerHeader(SELF04_CODE, SELF04_HEADER_MSG_TYPE)),
+                body = arrayListOf(SelfRequestInnerBody(mdn = mdn))
+            )
+        ).execute()
     }
 }

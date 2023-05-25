@@ -26,6 +26,11 @@
         <variable
             name="membershipPoint"
             type="String" />
+
+        <variable
+            name="paymentMethod"
+            type="String" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -121,7 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:onClick="@{()->mainActivity.onButton2Clicked()}"
+                        android:onClick="@{()->mainActivity.onReqeustMembershipIdButtonClicked()}"
                         android:text="RequestMembershipId"
                         android:textAllCaps="false"
                         android:textSize="10dp" />
@@ -147,7 +152,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginEnd="10dp"
-                        android:onClick="@{()->mainActivity.onButton3Clicked()}"
+                        android:onClick="@{()->mainActivity.onRequestMembershipPointButtonClicked()}"
                         android:text="RequestMembershipPoint"
                         android:textAllCaps="false"
                         android:textSize="12dp" />
@@ -159,7 +164,31 @@
                         android:text="@{membershipPoint}"
                         android:textSize="12sp"
                         tools:text="10000" />
+                </LinearLayout>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:onClick="@{()->mainActivity.onRequestSelf04ButtonClicked()}"
+                        android:text="RequestSelf04"
+                        android:textAllCaps="false"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@{paymentMethod}"
+                        android:textSize="12sp"
+                        tools:text="10000" />
                 </LinearLayout>
 
 

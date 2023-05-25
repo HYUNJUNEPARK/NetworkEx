@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.example.networkex.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -40,10 +39,13 @@ class MainActivity : AppCompatActivity() {
             binding.membershipPoint = it
         }
 
+        sharedViewModel.paymentMethod.observe(this@MainActivity) {
+            binding.paymentMethod = it
+        }
+
         supportFragmentManager.beginTransaction().apply {
             add(R.id.fragment_container_a1, FragmentA1())
             add(R.id.fragment_container_a2, FragmentA2())
-//            add(R.id.fragment_container_b, FragmentB1())
             commit()
         }
     }
@@ -68,13 +70,16 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    fun onButton2Clicked() {
+    fun onReqeustMembershipIdButtonClicked() {
         sharedViewModel.requestMembershipIdAndGrade("japark7@konai.com")
     }
 
-    fun onButton3Clicked() {
-        //sharedViewModel.requestCardPointEx1("50001027812")
+    fun onRequestMembershipPointButtonClicked() {
         sharedViewModel.requestCardPointEx2("japark7@konai.com")
+    }
+
+    fun onRequestSelf04ButtonClicked() {
+        sharedViewModel.requestSelf04("01056142379")
     }
 
     companion object {

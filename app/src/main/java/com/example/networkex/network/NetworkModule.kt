@@ -42,7 +42,7 @@ object NetworkModule {
     val commonInterceptor = Interceptor { chain ->
         with(chain) {
             val request = request().newBuilder()
-                .addHeader(AUTHORIZATION_NAME, ACCESS_TOKEN!!)
+                .addHeader(AUTHORIZATION_NAME, ACCESS_TOKEN!!) //TODO
                 .addHeader(CLIENT_NAME, CLIENT_VALUE)
                 .addHeader(CLIENT_SECRET_NAME, CLIENT_SECRET_VALUE)
                 .build()
