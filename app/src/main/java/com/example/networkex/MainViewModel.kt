@@ -12,6 +12,7 @@ import com.konai.mis_apitester.network.model.api.tmp.KonaCardResponseBodyPointIn
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -77,7 +78,8 @@ class MainViewModel: CoreServerBaseViewModel() {
         }
     }
 
-    fun requestCardPoint(membershipId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
+    //멤버십 아이디 -> 잔액
+    fun requestCardPointEx1(membershipId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
         val response = networkManager.requestMembershipPoint(membershipId)
         when(response.code()) {
@@ -99,6 +101,18 @@ class MainViewModel: CoreServerBaseViewModel() {
         }
     }
 
+    //이메일 -> 멤버십 아이디 -> 잔액
+    fun requestCardPointEx2(userId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
+        startLoading()
+        val membershipId = withContext(Dispatchers.IO) {
+            val response = networkManager.requestMembershipIdAndGrade(userId)
+            val responseBody = gson.toJson(response.body())
+            val responseData = gson.fromJson(responseBody, MisResponseBodyUserId::class.java).result //TODO 예외처리 필요
+            responseData!!.userId
+        }
+        requestCardPointEx1(membershipId!!)
+    }
+
     //func
     private fun startLoading() = viewModelScope.launch {
         _isLoading.value = true
@@ -117,7 +131,7 @@ class MainViewModel: CoreServerBaseViewModel() {
             is SocketTimeoutException -> {
                 _responseState.postValue(ResponseState.TIME_OUT)
             }
-            else -> {
+            else -> { //NullPointException, ClassCastException
                 _responseState.postValue(ResponseState.FAIL)
             }
         }

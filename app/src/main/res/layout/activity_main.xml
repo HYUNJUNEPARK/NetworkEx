@@ -46,89 +46,156 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/activity_main_et_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/gray"
-                android:hint="ID"
-                android:padding="10dp"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/activity_main_et_pw"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:background="@color/gray"
-                android:hint="PW"
-                android:padding="10dp"
-                android:textSize="15sp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/activity_main_et_id"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Token State"
+                    android:background="@color/gray"
+                    android:hint="ID"
+                    android:padding="10dp"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/activity_main_et_pw"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:text="@{isToken}"
-                    android:textColor="@color/red"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    tools:text="O" />
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/gray"
+                    android:hint="PW"
+                    android:padding="10dp"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:onClick="@{()->mainActivity.onRequestTokenButtonClicked()}"
+                        android:text="RequestToken"
+                        android:textAllCaps="false"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Token State"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="@{isToken}"
+                        android:textColor="@color/red"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:text="O" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:onClick="@{()->mainActivity.onButton2Clicked()}"
+                        android:text="RequestMembershipId"
+                        android:textAllCaps="false"
+                        android:textSize="10dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="@{membershipIdAndGrade}"
+                        android:textSize="12sp"
+                        tools:text="asdf@gmail.com" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:onClick="@{()->mainActivity.onButton3Clicked()}"
+                        android:text="RequestMembershipPoint"
+                        android:textAllCaps="false"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        tools:text="10000"
+                        android:text="@{membershipPoint}"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/fragment_container_a1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        tools:layout="@layout/fragment_a1" />
+
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/fragment_container_a2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        tools:layout="@layout/fragment_a2" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray" />
+
+
             </LinearLayout>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginVertical="10dp"
-                android:onClick="@{()->mainActivity.onRequestTokenButtonClicked()}"
-                android:text="RequestToken"
-                android:textAllCaps="false" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginVertical="10dp"
-                android:onClick="@{()->mainActivity.onButton2Clicked()}"
-                android:text="RequestMembershipIdAndGrade"
-                android:textAllCaps="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{membershipIdAndGrade}" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textAllCaps="false"
-                android:layout_marginVertical="10dp"
-                android:onClick="@{()->mainActivity.onButton3Clicked()}"
-                android:text="RequestMembershipPoint" />
-
-            <TextView
-                android:text="@{membershipPoint}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+        </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

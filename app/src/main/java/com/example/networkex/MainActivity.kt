@@ -23,9 +23,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         sharedViewModel.accessToken.observe(this@MainActivity) { accessToken ->
-            if (accessToken.isNotEmpty()) {
-                binding.isToken = "O"
-            }
+            if (accessToken.isNotEmpty()) binding.isToken = "O"
         }
 
         sharedViewModel.membershipIdAndGrade.observe(this@MainActivity) { it ->
@@ -40,6 +38,13 @@ class MainActivity : AppCompatActivity() {
         sharedViewModel.membershipPoint.observe(this@MainActivity) {
             binding.membershipPoint = it
         }
+
+        supportFragmentManager.beginTransaction().apply {
+            add(R.id.fragment_container_a2, FragmentA2())
+            add(R.id.fragment_container_a1, FragmentA1())
+            commit()
+        }
+
     }
 
     fun onRequestTokenButtonClicked() {
@@ -67,7 +72,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onButton3Clicked() {
-        sharedViewModel.requestCardPoint("50001027812")
+        //sharedViewModel.requestCardPointEx1("50001027812")
+        sharedViewModel.requestCardPointEx2("japark7@konai.com")
     }
 
     companion object {
