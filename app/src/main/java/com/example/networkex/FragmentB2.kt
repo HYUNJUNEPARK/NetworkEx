@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.example.networkex.databinding.FragmentB2Binding
 
 
@@ -21,6 +22,6 @@ class FragmentB2 : Fragment() {
     }
 
     fun onB2ButtonClicked() {
-        Toast.makeText(requireContext(), "B2", Toast.LENGTH_SHORT).show()
+        findNavController().popBackStack()
     }
 }

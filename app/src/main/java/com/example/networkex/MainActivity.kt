@@ -43,12 +43,9 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().apply {
             add(R.id.fragment_container_a1, FragmentA1())
             add(R.id.fragment_container_a2, FragmentA2())
-            add(R.id.fragment_container_b, FragmentB1())
+//            add(R.id.fragment_container_b, FragmentB1())
             commit()
         }
-
-
-
     }
 
     fun onRequestTokenButtonClicked() {

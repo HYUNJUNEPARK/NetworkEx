@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.example.networkex.databinding.FragmentB1Binding
 
 class FragmentB1 : Fragment() {
@@ -25,6 +26,6 @@ class FragmentB1 : Fragment() {
     }
 
     fun onB1ButtonClicked() {
-        Toast.makeText(requireContext(), "B1", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_fragmentB1_to_fragmentB2)
     }
 }

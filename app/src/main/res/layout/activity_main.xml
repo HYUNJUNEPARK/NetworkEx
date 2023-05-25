@@ -177,6 +177,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
                         android:text="Example1"
                         android:textStyle="bold" />
 
@@ -209,14 +210,18 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
                         android:text="Example2"
                         android:textStyle="bold" />
 
                     <androidx.fragment.app.FragmentContainerView
                         android:id="@+id/fragment_container_b"
+                        android:name="androidx.navigation.fragment.NavHostFragment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        app:defaultNavHost="true"
+                        app:navGraph="@navigation/nav_graph"
                         tools:layout="@layout/fragment_b1" />
                 </LinearLayout>
             </LinearLayout>
