@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.networkex.databinding.ActivityMainBinding
+import com.example.networkex.vm.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -71,18 +72,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onReqeustMembershipIdButtonClicked() {
-        sharedViewModel.requestMembershipIdAndGrade("japark7@konai.com")
+        sharedViewModel.requestMembershipIdAndGrade(TEST_USER_ID)
     }
 
     fun onRequestMembershipPointButtonClicked() {
-        sharedViewModel.requestCardPointEx2("japark7@konai.com")
+        sharedViewModel.requestCardPointEx2(TEST_USER_ID)
     }
 
     fun onRequestSelf04ButtonClicked() {
-        sharedViewModel.requestSelf04("01056142379")
+        sharedViewModel.requestSelf04(TEST_MDM)
     }
 
     companion object {
         const val TAG = "testLog"
+        const val TEST_USER_ID = "japark7@konai.com"
+        const val TEST_MDM = "01056142379"
     }
 }

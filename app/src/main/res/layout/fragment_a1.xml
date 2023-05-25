@@ -8,6 +8,14 @@
         <variable
             name="fragmentA1"
             type="com.example.networkex.FragmentA1" />
+
+        <variable
+            name="liveDataSVM"
+            type="String" />
+
+        <variable
+            name="liveDataFVM"
+            type="String" />
     </data>
 
     <FrameLayout
@@ -27,7 +35,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:padding="12dp">
 
                 <TextView
@@ -36,12 +44,43 @@
                     android:layout_weight="1"
                     android:text="FragmentA1" />
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="@{()->fragmentA1.onA1ButtonClicked()}"
-                    android:text="A1" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:textAllCaps="false"
+                        android:onClick="@{()->fragmentA1.onSharedVMButtonClicked()}"
+                        android:text="SharedVM" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{liveDataSVM}"
+                        tools:text="activity LiveData" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:textAllCaps="false"
+                        android:onClick="@{()->fragmentA1.onFragmentVMButtonClicked()}"
+                        android:text="FragmentVM" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{liveDataFVM}"
+                        tools:text="fragment LiveData" />
+                </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </FrameLayout>

@@ -1,4 +1,4 @@
-package com.example.networkex
+package com.example.networkex.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,15 +8,10 @@ import com.example.networkex.model.MisResponseAuthToken
 import com.example.networkex.model.MisResponseBodyUserId
 import com.example.networkex.model.SelfResponseBody04
 import com.example.networkex.model.UserIdResult
-import com.example.networkex.util.CoreServerBaseViewModel
 import com.konai.mis_apitester.network.model.api.tmp.KonaCardResponseBodyPointInfo
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.net.ConnectException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
 
 class MainViewModel: CoreServerBaseViewModel() {
     companion object {
@@ -131,30 +126,6 @@ class MainViewModel: CoreServerBaseViewModel() {
             else -> {
                 endLoading()
                 _responseState.postValue(ResponseState.NOT_CODE_200)
-            }
-        }
-    }
-
-    //func
-    private fun startLoading() = viewModelScope.launch {
-        _isLoading.value = true
-    }
-
-    private fun endLoading() = viewModelScope.launch {
-        _isLoading.value = false
-    }
-
-    private val exceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        endLoading()
-        when (throwable) {
-            is ConnectException, is UnknownHostException-> {
-                _responseState.postValue(ResponseState.BAD_INTERNET)
-            }
-            is SocketTimeoutException -> {
-                _responseState.postValue(ResponseState.TIME_OUT)
-            }
-            else -> { //NullPointException, ClassCastException
-                _responseState.postValue(ResponseState.FAIL)
             }
         }
     }
