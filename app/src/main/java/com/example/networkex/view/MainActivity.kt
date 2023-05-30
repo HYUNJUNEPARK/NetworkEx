@@ -16,7 +16,7 @@ import com.example.networkex.view.vm.SharedViewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val sharedViewModel: SharedViewModel by viewModels ()
-    private val loadingDialog by lazy {
+    val loadingDialog by lazy {
         LoadingDialogFragment().apply { setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogTheme) }
     }
 
