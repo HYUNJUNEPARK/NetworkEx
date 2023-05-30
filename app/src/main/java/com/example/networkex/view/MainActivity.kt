@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.DialogFragment
 import com.example.networkex.R
 import com.example.networkex.databinding.ActivityMainBinding
 import com.example.networkex.util.AppUtil.makeBase64
@@ -82,7 +83,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRequestMembershipIdButtonClicked() {
-        sharedViewModel.requestMembershipIdAndGrade(TEST_USER_ID)
+        //sharedViewModel.requestMembershipIdAndGrade(TEST_USER_ID)
+
+        val loadingDialogFragment = LoadingDialogFragment()
+        loadingDialogFragment.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogTheme)
+        loadingDialogFragment.show(supportFragmentManager, "Loading")
     }
 
     fun onRequestMembershipPointButtonClicked() {

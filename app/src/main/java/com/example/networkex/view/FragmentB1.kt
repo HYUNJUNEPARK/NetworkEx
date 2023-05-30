@@ -18,7 +18,6 @@ import com.example.networkex.databinding.FragmentB1Binding
 class FragmentB1 : Fragment() {
     private var _binding: FragmentB1Binding? = null
     private val binding get() = _binding!!
-
     val dataSample1: String = "FragmentB1 String dataSample1"
     val dataSample2: String = "FragmentB1 String dataSample2"
 
