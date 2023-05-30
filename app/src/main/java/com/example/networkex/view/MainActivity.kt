@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import com.example.networkex.R
 import com.example.networkex.databinding.ActivityMainBinding
 import com.example.networkex.util.AppUtil.makeBase64
@@ -15,6 +16,9 @@ import com.example.networkex.view.vm.SharedViewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val sharedViewModel: SharedViewModel by viewModels ()
+    private val loadingDialog by lazy {
+        LoadingDialogFragment().apply { setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogTheme) }
+    }
 
     companion object {
         const val TAG = "testLog"
@@ -31,7 +35,13 @@ class MainActivity : AppCompatActivity() {
         if (sharedViewModel.accessToken.value.isNullOrEmpty()) binding.isToken = "X"
 
         sharedViewModel.isLoading.observe(this@MainActivity) { isLoading ->
-            binding.isLoading = isLoading
+            if (isLoading) {
+                if (!loadingDialog.isAdded) {
+                    loadingDialog.show(supportFragmentManager, "Loading")
+                }
+            } else {
+                loadingDialog.dismiss()
+            }
         }
 
         sharedViewModel.accessToken.observe(this@MainActivity) { accessToken ->
@@ -83,11 +93,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRequestMembershipIdButtonClicked() {
-        //sharedViewModel.requestMembershipIdAndGrade(TEST_USER_ID)
-
-        val loadingDialogFragment = LoadingDialogFragment()
-        loadingDialogFragment.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogTheme)
-        loadingDialogFragment.show(supportFragmentManager, "Loading")
+        sharedViewModel.requestMembershipIdAndGrade(TEST_USER_ID)
     }
 
     fun onRequestMembershipPointButtonClicked() {
