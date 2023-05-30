@@ -46,7 +46,7 @@ class FragmentA1 : Fragment() {
 
         //네트워크 예외
         fragmentViewModel.responseState.observe(viewLifecycleOwner) { responseState ->
-            Toast.makeText(requireContext(), "${responseState.name}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), responseState.name, Toast.LENGTH_SHORT).show()
         }
 
         fragmentViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->

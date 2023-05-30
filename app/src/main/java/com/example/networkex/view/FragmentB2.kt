@@ -20,7 +20,7 @@ class FragmentB2 : Fragment() {
     private val binding get() = _binding!!
     private val sharedViewModel: SharedViewModel by activityViewModels ()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_b2, container, false)
         binding.fragmentB2 = this@FragmentB2
         return binding.root

@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import com.example.networkex.R
 import com.example.networkex.databinding.ActivityMainBinding
 import com.example.networkex.util.AppUtil.makeBase64

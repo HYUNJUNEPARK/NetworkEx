@@ -27,7 +27,7 @@ object AppUtil {
     }
 
     private fun String.sha256(): String {
-        return hashString(this, "SHA-256")
+        return hashString(this)
     }
 
     private fun String.encode(): String {
@@ -41,9 +41,9 @@ object AppUtil {
         return Base64.decode(this, Base64.DEFAULT).toString(charset("UTF-8"))
     }
 
-    private fun hashString(input: String, algorithm: String): String {
+    private fun hashString(input: String): String {
         return MessageDigest
-            .getInstance(algorithm)
+            .getInstance("SHA-256")
             .digest(input.toByteArray())
             .fold("") { str, it ->
                 str + "%02x".format(it)
