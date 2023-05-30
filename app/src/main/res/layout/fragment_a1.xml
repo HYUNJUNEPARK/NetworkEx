@@ -6,6 +6,14 @@
     <data>
 
         <variable
+            name="sharedViewModel"
+            type="com.example.networkex.view.vm.SharedViewModel" />
+
+        <variable
+            name="sampleData"
+            type="String" />
+
+        <variable
             name="fragmentA1"
             type="com.example.networkex.view.FragmentA1" />
 
@@ -52,9 +60,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:textAllCaps="false"
                         android:onClick="@{()->fragmentA1.onSharedVMButtonClicked()}"
-                        android:text="SharedVM" />
+                        android:text="SharedVM"
+                        android:textAllCaps="false" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -71,15 +79,53 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:textAllCaps="false"
                         android:onClick="@{()->fragmentA1.onFragmentVMButtonClicked()}"
-                        android:text="FragmentVM" />
+                        android:text="FragmentVM"
+                        android:textAllCaps="false" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{liveDataFVM}"
                         tools:text="fragment LiveData" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SharedVM LiveData Value Controller : " />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{sampleData}"
+                        tools:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:onClick="@{()->sharedViewModel.plusSampleData()}"
+                        android:text="+" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:onClick="@{()->sharedViewModel.minusSampleData()}"
+                        android:text="-" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

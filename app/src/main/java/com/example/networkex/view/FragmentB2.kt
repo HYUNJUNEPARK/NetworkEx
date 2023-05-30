@@ -11,7 +11,6 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.example.networkex.R
 import com.example.networkex.databinding.FragmentB2Binding
-import com.example.networkex.model.DataSample
 import com.example.networkex.view.MainActivity.Companion.TAG
 
 class FragmentB2 : Fragment() {
@@ -27,11 +26,9 @@ class FragmentB2 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         setFragmentResultListener("REQ_KEY") { /*requestKey*/_, bundle ->
             binding.fragmentB2Tv1.text = "RECEIVED : " + bundle.getString("BUNDLE_KEY1", "-")
         }
-
         binding.fragmentB2Tv2.text = "RECEIVED : " + arguments?.getString("BUNDLE_KEY2")
     }
 

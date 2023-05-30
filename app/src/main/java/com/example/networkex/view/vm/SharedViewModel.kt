@@ -1,5 +1,6 @@
 package com.example.networkex.view.vm
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -8,6 +9,7 @@ import com.example.networkex.network.model.MisResponseAuthToken
 import com.example.networkex.network.model.MisResponseBodyUserId
 import com.example.networkex.network.model.SelfResponseBody04
 import com.example.networkex.network.model.UserIdResult
+import com.example.networkex.view.MainActivity.Companion.TAG
 import com.konai.mis_apitester.network.model.api.tmp.KonaCardResponseBodyPointInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,6 +32,23 @@ class SharedViewModel: CoreServerBaseViewModel() {
 
     private var _paymentMethod = MutableLiveData<String>()
     val paymentMethod : LiveData<String> get() = _paymentMethod
+
+    private var _sampleData = MutableLiveData<Int>()
+    val sampleData : LiveData<Int> get() = _sampleData
+
+    init {
+        if (sampleData.value == null ) _sampleData.value = 0
+    }
+
+    fun plusSampleData() {
+        _sampleData.value = sampleData.value?.plus(1)
+        Log.d(TAG, "plusSampleData: ${sampleData.value}")
+    }
+
+    fun minusSampleData() {
+        _sampleData.value = sampleData.value?.minus(1)
+        Log.d(TAG, "minusSampleData: ${sampleData.value}")
+    }
 
     //API
     fun requestAccessToken(userId: String, pwd: String, deviceId: String, pushToken: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {

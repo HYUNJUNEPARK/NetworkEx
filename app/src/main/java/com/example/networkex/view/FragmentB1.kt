@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.networkex.R
 import com.example.networkex.view.MainActivity.Companion.TAG
 import com.example.networkex.databinding.FragmentB1Binding
-import com.example.networkex.model.DataSample
 
 //FragmentB1, FragmentB2 : Fragment 간 데이터 전달
 class FragmentB1 : Fragment() {
@@ -22,11 +21,6 @@ class FragmentB1 : Fragment() {
 
     val dataSample1: String = "FragmentB1 String dataSample1"
     val dataSample2: String = "FragmentB1 String dataSample2"
-
-    val dataSample3: DataSample = DataSample(
-        data1 = "FragmentB1 String Data",
-        data2 = 200
-    )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_b1, container, false)

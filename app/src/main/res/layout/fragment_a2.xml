@@ -12,6 +12,10 @@
         <variable
             name="liveDataFVM"
             type="String" />
+
+        <variable
+            name="sampleData"
+            type="String" />
     </data>
 
     <FrameLayout
@@ -39,16 +43,32 @@
                     android:layout_height="wrap_content"
                     android:text="FragmentA2" />
 
-
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:textAllCaps="false"
                     android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
                     android:onClick="@{()->fragmentA2.onA2ButtonClicked()}"
-                    android:text="FragmentA1 VM LiveData" />
+                    android:text="FragmentA1 FragmentVM LiveData"
+                    android:textAllCaps="false" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SharedViewModel SampleData Observe : " />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{sampleData}"
+                        tools:text="0" />
+
+                </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
