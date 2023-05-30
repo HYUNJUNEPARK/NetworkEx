@@ -1,6 +1,7 @@
 package com.example.networkex
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.networkex.databinding.FragmentB2Binding
 
-
 class FragmentB2 : Fragment() {
     private var _binding: FragmentB2Binding? = null
     private val binding get() = _binding!!
@@ -19,6 +19,16 @@ class FragmentB2 : Fragment() {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_b2, container, false)
         binding.fragmentB2 = this@FragmentB2
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d(MainActivity.TAG, "onDestroyView FragmentB2: ")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(MainActivity.TAG, "onDestroy FragmentB2: ")
     }
 
     fun onB2ButtonClicked() {

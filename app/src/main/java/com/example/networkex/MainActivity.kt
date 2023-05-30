@@ -6,11 +6,17 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.networkex.databinding.ActivityMainBinding
-import com.example.networkex.vm.MainViewModel
+import com.example.networkex.vm.SharedViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val sharedViewModel: MainViewModel by viewModels ()
+    private val sharedViewModel: SharedViewModel by viewModels ()
+
+    companion object {
+        const val TAG = "testLog"
+        const val TEST_USER_ID = "japark7@konai.com"
+        const val TEST_MDM = "01056142379"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    fun onReqeustMembershipIdButtonClicked() {
+    fun onRequestMembershipIdButtonClicked() {
         sharedViewModel.requestMembershipIdAndGrade(TEST_USER_ID)
     }
 
@@ -81,11 +87,5 @@ class MainActivity : AppCompatActivity() {
 
     fun onRequestSelf04ButtonClicked() {
         sharedViewModel.requestSelf04(TEST_MDM)
-    }
-
-    companion object {
-        const val TAG = "testLog"
-        const val TEST_USER_ID = "japark7@konai.com"
-        const val TEST_MDM = "01056142379"
     }
 }

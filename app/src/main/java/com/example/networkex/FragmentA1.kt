@@ -12,13 +12,13 @@ import androidx.fragment.app.viewModels
 import com.example.networkex.MainActivity.Companion.TEST_USER_ID
 import com.example.networkex.databinding.FragmentA1Binding
 import com.example.networkex.vm.FragmentAViewModel
-import com.example.networkex.vm.MainViewModel
+import com.example.networkex.vm.SharedViewModel
 
 
 class FragmentA1 : Fragment() {
     private var _binding : FragmentA1Binding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: MainViewModel by activityViewModels ()
+    private val sharedViewModel: SharedViewModel by activityViewModels ()
     private val fragmentViewModel: FragmentAViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -38,10 +38,6 @@ class FragmentA1 : Fragment() {
         fragmentViewModel.responseState.observe(viewLifecycleOwner) { it ->
             Toast.makeText(requireContext(), "${it.name}", Toast.LENGTH_SHORT).show()
         }
-
-//        sharedViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-//            binding.isLoading = isLoading
-//        }
     }
 
     override fun onDestroyView() {

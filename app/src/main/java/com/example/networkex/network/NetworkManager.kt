@@ -6,10 +6,10 @@ import com.example.networkex.model.KonaCardRequestBodyUserId
 import com.example.networkex.model.SelfRequestBody
 import com.example.networkex.model.SelfRequestInnerBody
 import com.example.networkex.model.SelfRequestInnerHeader
-import com.example.networkex.network.NetworkModule.commonInterceptor
-import com.example.networkex.network.NetworkModule.konaCardInterceptor
-import com.example.networkex.network.NetworkModule.misAuthInterceptor
-import com.example.networkex.network.NetworkModule.provideRetrofit
+import com.example.networkex.network.NetworkInterceptor.commonInterceptor
+import com.example.networkex.network.NetworkInterceptor.konaCardInterceptor
+import com.example.networkex.network.NetworkInterceptor.misAuthInterceptor
+import com.example.networkex.network.NetworkProvider.provideRetrofit
 import com.example.networkex.util.NetworkUtil
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody

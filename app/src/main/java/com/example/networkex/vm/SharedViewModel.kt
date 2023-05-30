@@ -13,12 +13,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainViewModel: CoreServerBaseViewModel() {
+class SharedViewModel: CoreServerBaseViewModel() {
     companion object {
         var ACCESS_TOKEN: String? = null
     }
 
-    //LiveData
+    //VIEW 에서 Observer 로 결과를 확인하기 위해 LiveData 를 사용. 실제 Request 는 ACCESS_TOKEN 이 사용됨
     private var _accessToken = MutableLiveData<String>()
     val accessToken : LiveData<String> get() = _accessToken
 

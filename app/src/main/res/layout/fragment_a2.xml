@@ -49,8 +49,6 @@
                     android:onClick="@{()->fragmentA2.onA2ButtonClicked()}"
                     android:text="FragmentA1 VM LiveData" />
 
-
-
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </FrameLayout>

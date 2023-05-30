@@ -1,6 +1,7 @@
 package com.example.networkex
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import com.example.networkex.MainActivity.Companion.TAG
 import com.example.networkex.databinding.FragmentA2Binding
 import com.example.networkex.vm.FragmentAViewModel
 
@@ -22,13 +24,12 @@ class FragmentA2 : Fragment() {
         return binding.root
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 
     fun onA2ButtonClicked() {
-
         Toast.makeText(requireContext(), "FragmentA VM LiveDate : ${fragmentViewModel.membershipIdAndGrade.value?.userId}", Toast.LENGTH_SHORT).show()
     }
 }

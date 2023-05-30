@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="@{()->fragmentB1.onB1ButtonClicked()}"
-                    android:text="B1" />
+                    android:text="MOVE" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

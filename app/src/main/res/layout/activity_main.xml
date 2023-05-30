@@ -126,7 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:onClick="@{()->mainActivity.onReqeustMembershipIdButtonClicked()}"
+                        android:onClick="@{()->mainActivity.onRequestMembershipIdButtonClicked()}"
                         android:text="RequestMembershipId"
                         android:textAllCaps="false"
                         android:textSize="10dp" />
