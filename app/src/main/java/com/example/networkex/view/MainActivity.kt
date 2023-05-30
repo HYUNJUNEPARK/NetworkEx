@@ -1,12 +1,13 @@
-package com.example.networkex
+package com.example.networkex.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import com.example.networkex.R
 import com.example.networkex.databinding.ActivityMainBinding
-import com.example.networkex.vm.SharedViewModel
+import com.example.networkex.view.vm.SharedViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

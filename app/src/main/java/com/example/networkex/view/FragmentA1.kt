@@ -1,4 +1,4 @@
-package com.example.networkex
+package com.example.networkex.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,11 +9,11 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.example.networkex.MainActivity.Companion.TEST_USER_ID
+import com.example.networkex.R
+import com.example.networkex.view.MainActivity.Companion.TEST_USER_ID
 import com.example.networkex.databinding.FragmentA1Binding
-import com.example.networkex.vm.FragmentAViewModel
-import com.example.networkex.vm.SharedViewModel
-
+import com.example.networkex.view.vm.FragmentAViewModel
+import com.example.networkex.view.vm.SharedViewModel
 
 class FragmentA1 : Fragment() {
     private var _binding : FragmentA1Binding? = null

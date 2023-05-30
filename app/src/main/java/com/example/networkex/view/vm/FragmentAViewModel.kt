@@ -1,4 +1,4 @@
-package com.example.networkex.vm
+package com.example.networkex.view.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

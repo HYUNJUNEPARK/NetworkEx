@@ -7,7 +7,7 @@
 
         <variable
             name="fragmentA2"
-            type="com.example.networkex.FragmentA2" />
+            type="com.example.networkex.view.FragmentA2" />
 
         <variable
             name="liveDataFVM"
@@ -17,7 +17,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".FragmentA1">
+        tools:context=".view.FragmentA1">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"

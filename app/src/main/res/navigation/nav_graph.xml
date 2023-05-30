@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/fragmentB1"
-        android:name="com.example.networkex.FragmentB1"
+        android:name="com.example.networkex.view.FragmentB1"
         android:label="FragmentB1" >
         <action
             android:id="@+id/action_fragmentB1_to_fragmentB2"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentB2"
-        android:name="com.example.networkex.FragmentB2"
+        android:name="com.example.networkex.view.FragmentB2"
         android:label="FragmentB2" >
         <action
             android:id="@+id/action_fragmentB2_to_fragmentB1"

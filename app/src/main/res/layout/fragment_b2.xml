@@ -6,13 +6,13 @@
     <data>
         <variable
             name="fragmentB2"
-            type="com.example.networkex.FragmentB2" />
+            type="com.example.networkex.view.FragmentB2" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".FragmentB1">
+        tools:context=".view.FragmentB1">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
