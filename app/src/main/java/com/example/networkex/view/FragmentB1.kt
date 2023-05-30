@@ -20,8 +20,10 @@ class FragmentB1 : Fragment() {
     private var _binding: FragmentB1Binding? = null
     private val binding get() = _binding!!
 
-    val dataSample1: String = "FragmentB1 String dataSample"
-    val dataSample2: DataSample = DataSample(
+    val dataSample1: String = "FragmentB1 String dataSample1"
+    val dataSample2: String = "FragmentB1 String dataSample2"
+
+    val dataSample3: DataSample = DataSample(
         data1 = "FragmentB1 String Data",
         data2 = 200
     )
@@ -44,11 +46,15 @@ class FragmentB1 : Fragment() {
     }
 
     fun onB1ButtonClicked() {
-        //Fragment 간 데이터(String, Int, Long, Boolean) 전달할 때 Bundle 에 넣어 전달한다.
+        //방법1
+        //Fragment 간 데이터(String, char, boolean, int, byte, booleanArray, intArray, etc) 전달할 때 Bundle 에 넣어 전달한다.
         setFragmentResult(
             "REQ_KEY",
-            bundleOf("BUNDLE_KEY" to dataSample1)
+            bundleOf("BUNDLE_KEY1" to dataSample1)
         )
-        findNavController().navigate(R.id.action_fragmentB1_to_fragmentB2) //FragmentB1 onDestroyView
+
+        //방법2
+        val bundle = bundleOf("BUNDLE_KEY2" to dataSample2)
+        findNavController().navigate(R.id.action_fragmentB1_to_fragmentB2, bundle) //FragmentB1 onDestroyView
     }
 }
