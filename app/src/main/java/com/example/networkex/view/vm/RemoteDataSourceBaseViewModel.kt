@@ -13,7 +13,7 @@ import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-abstract class CoreServerBaseViewModel: ViewModel() {
+abstract class RemoteDataSourceBaseViewModel: ViewModel() {
     protected val networkManager = NetworkManager()
     protected val gson = Gson()
 

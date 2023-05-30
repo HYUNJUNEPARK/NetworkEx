@@ -9,7 +9,7 @@ import com.example.networkex.network.model.UserIdResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FragmentViewModel: CoreServerBaseViewModel() {
+class FragmentViewModel: RemoteDataSourceBaseViewModel() {
     private var _membershipIdAndGrade = MutableLiveData<UserIdResult>()
     val membershipIdAndGrade : LiveData<UserIdResult> get() = _membershipIdAndGrade
 
