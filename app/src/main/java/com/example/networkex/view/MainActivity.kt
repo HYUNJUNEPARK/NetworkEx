@@ -7,6 +7,8 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.networkex.R
 import com.example.networkex.databinding.ActivityMainBinding
+import com.example.networkex.util.AppUtil.makeBase64
+import com.example.networkex.util.AppUtil.makeSHA256AndBase64
 import com.example.networkex.view.vm.SharedViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val TAG = "testLog"
         const val TEST_USER_ID = "japark7@konai.com"
+        const val TEST_USER_PW = "kona!234"
         const val TEST_MDM = "01056142379"
     }
 
@@ -34,13 +37,13 @@ class MainActivity : AppCompatActivity() {
             if (accessToken.isNotEmpty()) binding.isToken = "O"
         }
 
-        sharedViewModel.membershipIdAndGrade.observe(this@MainActivity) { it ->
-            val result = "${it.userId}, ${it.grade}, ${it.loginId}"
+        sharedViewModel.membershipIdAndGrade.observe(this@MainActivity) { membershipData ->
+            val result = "${membershipData.userId}, ${membershipData.grade}, ${membershipData.loginId}"
             binding.membershipIdAndGrade = result
         }
         
-        sharedViewModel.responseState.observe(this@MainActivity) { it ->
-            Toast.makeText(this, "${it.name}", Toast.LENGTH_SHORT).show()
+        sharedViewModel.responseState.observe(this@MainActivity) { responseState ->
+            Toast.makeText(this, responseState.name, Toast.LENGTH_SHORT).show()
         }
 
         sharedViewModel.membershipPoint.observe(this@MainActivity) {
@@ -60,12 +63,12 @@ class MainActivity : AppCompatActivity() {
 
     fun onRequestTokenButtonClicked() {
         val userId = if (binding.activityMainEtId.text.isEmpty()) {
-            "amFwYXJrN0Brb25haS5jb20="
+            makeBase64(TEST_USER_ID)
         } else {
             binding.activityMainEtId.text.toString()
         }
         val pw = if (binding.activityMainEtPw.text.isEmpty()) {
-            "NjRjOWNmZTgzZWViZmFlZDUwNWE0ZjU4YmY2OWIyNTljNTExNDFkZDUxM2M3ODdjNzg2NjgwN2E4MDcyNzFmMA=="
+            makeSHA256AndBase64(TEST_USER_PW)
         } else {
             binding.activityMainEtPw.text.toString()
         }

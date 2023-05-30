@@ -1,13 +1,11 @@
 package com.example.networkex.view.vm
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.networkex.enums.ResponseState
 import com.example.networkex.network.NetworkManager
-import com.example.networkex.view.MainActivity.Companion.TAG
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -26,12 +24,10 @@ abstract class CoreServerBaseViewModel: ViewModel() {
     val responseState : LiveData<ResponseState> get() = _responseState
 
     protected fun startLoading() = viewModelScope.launch {
-        Log.d(TAG, "startLoading: ")
         _isLoading.value = true
     }
 
     protected fun endLoading() = viewModelScope.launch {
-        Log.d(TAG, "endLoading: ")
         _isLoading.value = false
     }
 
