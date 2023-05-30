@@ -67,7 +67,6 @@
                         android:layout_height="wrap_content"
                         android:text="@{sampleData}"
                         tools:text="0" />
-
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

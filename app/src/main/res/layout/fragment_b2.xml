@@ -8,6 +8,10 @@
         <variable
             name="fragmentB2"
             type="com.example.networkex.view.FragmentB2" />
+
+        <variable
+            name="sampleData"
+            type="String" />
     </data>
 
     <FrameLayout
@@ -60,6 +64,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SharedViewModel SampleData Observe : " />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{sampleData}"
+                            tools:text="0" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
