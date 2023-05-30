@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="fragmentB2"
             type="com.example.networkex.view.FragmentB2" />
@@ -17,31 +18,48 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
             android:minHeight="150dp"
             app:cardCornerRadius="10dp"
-            android:backgroundTint="@color/gray"
             app:cardElevation="1dp"
             app:strokeColor="@color/gray"
             app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="12dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="FragmentB2" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{()->fragmentB2.onB2ButtonClicked()}"
+                        android:text="BACK" />
+                </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/fragment_b2_tv_1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="FragmentB2" />
+                    android:padding="12dp" />
 
-                <Button
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/fragment_b2_tv_2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{()->fragmentB2.onB2ButtonClicked()}"
-                    android:text="BACK" />
-
+                    android:padding="12dp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </FrameLayout>

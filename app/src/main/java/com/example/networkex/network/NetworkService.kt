@@ -5,8 +5,8 @@ import com.example.networkex.const.UrlConst.POINT_INFO
 import com.example.networkex.const.UrlConst.SELF_CARE_V1
 import com.example.networkex.const.UrlConst.SELF_CARE_V2
 import com.example.networkex.const.UrlConst.USER_ID
-import com.example.networkex.model.KonaCardRequestBodyUserId
-import com.example.networkex.model.SelfRequestBody
+import com.example.networkex.network.model.KonaCardRequestBodyUserId
+import com.example.networkex.network.model.SelfRequestBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*

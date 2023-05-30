@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.example.networkex.R
 import com.example.networkex.databinding.FragmentB2Binding
@@ -21,17 +22,25 @@ class FragmentB2 : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setFragmentResultListener("REQ_KEY") { /*requestKey*/_, bundle ->
+            binding.fragmentB2Tv1.text = bundle.getString("BUNDLE_KEY", "-")
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        Log.d(MainActivity.TAG, "onDestroyView FragmentB2: ")
+        Log.d(MainActivity.TAG, "onDestroyView FragmentB2")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(MainActivity.TAG, "onDestroy FragmentB2: ")
+        Log.d(MainActivity.TAG, "onDestroy FragmentB2")
     }
 
     fun onB2ButtonClicked() {
-        findNavController().popBackStack()
+        findNavController().popBackStack() //FragmentB2 onDestroy
     }
 }

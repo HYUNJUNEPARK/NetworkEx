@@ -2,10 +2,10 @@ package com.example.networkex.network
 
 import com.example.networkex.const.ApiConst.SELF04_CODE
 import com.example.networkex.const.ApiConst.SELF04_HEADER_MSG_TYPE
-import com.example.networkex.model.KonaCardRequestBodyUserId
-import com.example.networkex.model.SelfRequestBody
-import com.example.networkex.model.SelfRequestInnerBody
-import com.example.networkex.model.SelfRequestInnerHeader
+import com.example.networkex.network.model.KonaCardRequestBodyUserId
+import com.example.networkex.network.model.SelfRequestBody
+import com.example.networkex.network.model.SelfRequestInnerBody
+import com.example.networkex.network.model.SelfRequestInnerHeader
 import com.example.networkex.network.NetworkInterceptor.commonInterceptor
 import com.example.networkex.network.NetworkInterceptor.konaCardInterceptor
 import com.example.networkex.network.NetworkInterceptor.misAuthInterceptor

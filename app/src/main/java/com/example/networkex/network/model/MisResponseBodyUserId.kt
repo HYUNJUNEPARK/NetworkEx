@@ -1,4 +1,4 @@
-package com.example.networkex.model
+package com.example.networkex.network.model
 
 import com.google.gson.annotations.SerializedName
 

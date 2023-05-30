@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.networkex.enums.ResponseState
-import com.example.networkex.model.MisResponseBodyUserId
-import com.example.networkex.model.UserIdResult
+import com.example.networkex.network.model.MisResponseBodyUserId
+import com.example.networkex.network.model.UserIdResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FragmentAViewModel: CoreServerBaseViewModel() {
+class FragmentViewModel: CoreServerBaseViewModel() {
     private var _membershipIdAndGrade = MutableLiveData<UserIdResult>()
     val membershipIdAndGrade : LiveData<UserIdResult> get() = _membershipIdAndGrade
 

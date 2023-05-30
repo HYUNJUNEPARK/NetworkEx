@@ -10,12 +10,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.networkex.R
 import com.example.networkex.databinding.FragmentA2Binding
-import com.example.networkex.view.vm.FragmentAViewModel
+import com.example.networkex.view.vm.FragmentViewModel
 
 class FragmentA2 : Fragment() {
     private var _binding: FragmentA2Binding? = null
     private val binding get() = _binding!!
-    private val fragmentViewModel: FragmentAViewModel by viewModels()
+    private val fragmentViewModel: FragmentViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_a2, container, false)
