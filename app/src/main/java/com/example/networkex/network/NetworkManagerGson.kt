@@ -16,16 +16,16 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Response
 
-class NetworkManager {
+class NetworkManagerGson {
     //KONA CARD
     fun requestMembershipPoint(membershipId: String): Response<Any> {
-        val networkService: NetworkService = provideRetrofit(konaCardInterceptor).create(NetworkService::class.java)
+        val networkService: NetworkServiceGson = provideRetrofit(konaCardInterceptor).create(NetworkServiceGson::class.java)
         return networkService.pointInfo(KonaCardRequestBodyUserId(membershipId)).execute()
     }
 
     //MIS
     fun requestAccessToken(userId: String, pwd: String, deviceId: String, pushToken: String): Response<Any> {
-        val networkService: NetworkService = provideRetrofit(misAuthInterceptor).create(NetworkService::class.java)
+        val networkService: NetworkServiceGson = provideRetrofit(misAuthInterceptor).create(NetworkServiceGson::class.java)
         val mediaType = "text/plain"
         val requestMap: HashMap<String, RequestBody> = HashMap()
         requestMap.apply {
@@ -42,14 +42,14 @@ class NetworkManager {
     }
 
     fun requestMembershipIdAndGrade(userId: String): Response<Any> {
-        val networkService: NetworkService = provideRetrofit(commonInterceptor).create(NetworkService::class.java)
+        val networkService: NetworkServiceGson = provideRetrofit(commonInterceptor).create(NetworkServiceGson::class.java)
         return networkService.getUserMembershipId(userId).execute()
     }
 
     //SELF CARE
     //납부 방법 조회
     fun requestSelf04(mdn: String): Response<Any> {
-        val networkService: NetworkService = provideRetrofit(commonInterceptor).create(NetworkService::class.java)
+        val networkService: NetworkServiceGson = provideRetrofit(commonInterceptor).create(NetworkServiceGson::class.java)
         return networkService.selfcareV1(
             SelfRequestBody(
                 header = arrayListOf(SelfRequestInnerHeader(SELF04_CODE, SELF04_HEADER_MSG_TYPE)),

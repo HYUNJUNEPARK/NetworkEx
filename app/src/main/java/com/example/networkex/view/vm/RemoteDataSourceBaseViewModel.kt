@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.networkex.enums.ResponseState
-import com.example.networkex.network.NetworkManager
+import com.example.networkex.network.NetworkManagerGson
 import com.example.networkex.network.NetworkManagerKotlinx
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -15,7 +15,7 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 abstract class RemoteDataSourceBaseViewModel: ViewModel() {
-    protected val networkManager = NetworkManager()
+    protected val networkManagerGson = NetworkManagerGson()
     protected val networkManagerKotlinx = NetworkManagerKotlinx()
     protected val gson = Gson()
 
@@ -43,6 +43,7 @@ abstract class RemoteDataSourceBaseViewModel: ViewModel() {
                 _responseState.postValue(ResponseState.TIME_OUT)
             }
             else -> { //NullPointException, ClassCastException
+                throwable.printStackTrace()
                 _responseState.postValue(ResponseState.FAIL)
             }
         }

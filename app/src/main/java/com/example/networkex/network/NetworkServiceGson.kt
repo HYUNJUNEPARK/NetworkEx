@@ -7,12 +7,11 @@ import com.example.networkex.const.UrlConst.SELF_CARE_V2
 import com.example.networkex.const.UrlConst.USER_ID
 import com.example.networkex.network.model.gson.KonaCardRequestBodyUserId
 import com.example.networkex.network.model.gson.SelfRequestBody
-import com.example.networkex.network.model.kotlinx.Repo
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
-interface NetworkService {
+interface NetworkServiceGson {
     //KONA CARD
     @POST(POINT_INFO)
     fun pointInfo(
@@ -45,10 +44,4 @@ interface NetworkService {
         @Body
         body: SelfRequestBody
     ): Call<Any>
-
-    //Sample
-    @GET("users/{user}/repos") //Call<List<Repo>>
-    fun listRepos(
-        @Path("user") user: String
-    ): Call<List<Repo>>
 }

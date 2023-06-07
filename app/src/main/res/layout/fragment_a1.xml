@@ -7,7 +7,7 @@
 
         <variable
             name="sharedViewModel"
-            type="com.example.networkex.view.vm.SharedViewModel" />
+            type="com.example.networkex.view.vm.SharedViewModelGson" />
 
         <variable
             name="sampleData"

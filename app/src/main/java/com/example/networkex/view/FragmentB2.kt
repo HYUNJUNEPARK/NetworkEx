@@ -13,12 +13,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.networkex.R
 import com.example.networkex.databinding.FragmentB2Binding
 import com.example.networkex.view.MainActivity.Companion.TAG
-import com.example.networkex.view.vm.SharedViewModel
+import com.example.networkex.view.vm.SharedViewModelGson
 
 class FragmentB2 : Fragment() {
     private var _binding: FragmentB2Binding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: SharedViewModel by activityViewModels ()
+    private val sharedViewModelGson: SharedViewModelGson by activityViewModels ()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_b2, container, false)
@@ -34,7 +34,7 @@ class FragmentB2 : Fragment() {
         }
         binding.fragmentB2Tv2.text = "RECEIVED : " + arguments?.getString("BUNDLE_KEY2")
 
-        sharedViewModel.sampleData.observe(viewLifecycleOwner) {
+        sharedViewModelGson.sampleData.observe(viewLifecycleOwner) {
             binding.sampleData = it.toString()
         }
     }

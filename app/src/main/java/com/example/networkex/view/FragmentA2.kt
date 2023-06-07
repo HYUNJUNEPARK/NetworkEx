@@ -12,13 +12,13 @@ import androidx.fragment.app.viewModels
 import com.example.networkex.R
 import com.example.networkex.databinding.FragmentA2Binding
 import com.example.networkex.view.vm.FragmentViewModel
-import com.example.networkex.view.vm.SharedViewModel
+import com.example.networkex.view.vm.SharedViewModelGson
 
 class FragmentA2 : Fragment() {
     private var _binding: FragmentA2Binding? = null
     private val binding get() = _binding!!
     private val fragmentViewModel: FragmentViewModel by viewModels()
-    private val sharedViewModel: SharedViewModel by activityViewModels ()
+    private val sharedViewModelGson: SharedViewModelGson by activityViewModels ()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_a2, container, false)
@@ -29,7 +29,7 @@ class FragmentA2 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedViewModel.sampleData.observe(viewLifecycleOwner) {
+        sharedViewModelGson.sampleData.observe(viewLifecycleOwner) {
             binding.sampleData = it.toString()
         }
     }

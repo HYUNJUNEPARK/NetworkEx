@@ -18,7 +18,7 @@ class FragmentViewModel: RemoteDataSourceBaseViewModel() {
      */
     fun requestMembershipIdAndGrade(userId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
-        val response = networkManager.requestMembershipIdAndGrade(userId)
+        val response = networkManagerGson.requestMembershipIdAndGrade(userId)
         when(response.code()) {
             200 -> {
                 endLoading()

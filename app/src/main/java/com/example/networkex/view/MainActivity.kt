@@ -8,21 +8,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.example.networkex.R
 import com.example.networkex.databinding.ActivityMainBinding
-import com.example.networkex.network.NetworkManagerKotlinx
 import com.example.networkex.util.AppUtil.makeBase64
 import com.example.networkex.util.AppUtil.makeSHA256AndBase64
-import com.example.networkex.view.vm.SharedViewModel
+import com.example.networkex.view.vm.SharedViewModelGson
 import com.example.networkex.view.vm.SharedViewModelKotlinx
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val sharedViewModel: SharedViewModel by viewModels ()
+    private val sharedViewModelGson: SharedViewModelGson by viewModels ()
     private val sharedViewModelKotlinx: SharedViewModelKotlinx by viewModels ()
     val loadingDialog by lazy {
         LoadingDialogFragment().apply { setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogTheme) }
     }
-
-    private val testNetworkManager = NetworkManagerKotlinx()
 
     companion object {
         const val TAG = "testLog"
@@ -37,9 +34,9 @@ class MainActivity : AppCompatActivity() {
         binding.mainActivity = this@MainActivity
 
 
-        if (sharedViewModel.accessToken.value.isNullOrEmpty()) binding.isToken = "X"
+        if (sharedViewModelGson.accessToken.value.isNullOrEmpty()) binding.isToken = "X"
 
-        sharedViewModel.isLoading.observe(this@MainActivity) { isLoading ->
+        sharedViewModelGson.isLoading.observe(this@MainActivity) { isLoading ->
             if (isLoading) {
                 if (!loadingDialog.isAdded) {
                     loadingDialog.show(supportFragmentManager, "Loading")
@@ -49,24 +46,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        sharedViewModel.accessToken.observe(this@MainActivity) { accessToken ->
+        sharedViewModelGson.accessToken.observe(this@MainActivity) { accessToken ->
             if (accessToken.isNotEmpty()) binding.isToken = "O"
         }
 
-        sharedViewModel.membershipIdAndGrade.observe(this@MainActivity) { membershipData ->
+        sharedViewModelGson.membershipIdAndGrade.observe(this@MainActivity) { membershipData ->
             val result = "${membershipData.userId}, ${membershipData.grade}, ${membershipData.loginId}"
             binding.membershipIdAndGrade = result
         }
         
-        sharedViewModel.responseState.observe(this@MainActivity) { responseState ->
+        sharedViewModelGson.responseState.observe(this@MainActivity) { responseState ->
             Toast.makeText(this, responseState.name, Toast.LENGTH_SHORT).show()
         }
 
-        sharedViewModel.membershipPoint.observe(this@MainActivity) {
+        sharedViewModelGson.membershipPoint.observe(this@MainActivity) {
             binding.membershipPoint = it
         }
 
-        sharedViewModel.paymentMethod.observe(this@MainActivity) {
+        sharedViewModelGson.paymentMethod.observe(this@MainActivity) {
             binding.paymentMethod = it
         }
 
@@ -93,7 +90,7 @@ class MainActivity : AppCompatActivity() {
             binding.activityMainEtPw.text.toString()
         }
 
-        sharedViewModel.requestAccessToken(
+        sharedViewModelGson.requestAccessToken(
             userId = userId,
             pwd = pw,
             "deviceId1234", //getDeviceId(this), (deviceId1234 중복 로그인 푸시 확인 가능)
@@ -102,24 +99,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRequestMembershipIdButtonClicked() {
-        sharedViewModel.requestMembershipIdAndGrade(TEST_USER_ID)
+        sharedViewModelGson.requestMembershipIdAndGrade(TEST_USER_ID)
     }
 
     fun onRequestMembershipPointButtonClicked() {
-        sharedViewModel.requestCardPointEx2(TEST_USER_ID)
+        sharedViewModelGson.requestCardPointEx2(TEST_USER_ID)
     }
 
     fun onRequestSelf04ButtonClicked() {
-        sharedViewModel.requestSelf04(TEST_MDM)
-
+        sharedViewModelGson.requestSelf04(TEST_MDM)
     }
 
     fun onRequestKotlinxEx1() {
-        Toast.makeText(this, "Ex1", Toast.LENGTH_SHORT).show()
-        sharedViewModelKotlinx.requestTest()
+        sharedViewModelKotlinx.requestMembershipPoint("50001027812")
     }
 
     fun onRequestKotlinxEx2() {
         Toast.makeText(this, "Ex2", Toast.LENGTH_SHORT).show()
+
     }
 }

@@ -15,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class SharedViewModel: RemoteDataSourceBaseViewModel() {
+class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
     companion object {
         var ACCESS_TOKEN: String? = null
     }
@@ -53,7 +53,7 @@ class SharedViewModel: RemoteDataSourceBaseViewModel() {
     //API
     fun requestAccessToken(userId: String, pwd: String, deviceId: String, pushToken: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
-        val response = networkManager.requestAccessToken(userId, pwd, deviceId, pushToken)
+        val response = networkManagerGson.requestAccessToken(userId, pwd, deviceId, pushToken)
         when(response.code()) {
             200 -> {
                 endLoading()
@@ -75,7 +75,7 @@ class SharedViewModel: RemoteDataSourceBaseViewModel() {
      */
     fun requestMembershipIdAndGrade(userId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
-        val response = networkManager.requestMembershipIdAndGrade(userId)
+        val response = networkManagerGson.requestMembershipIdAndGrade(userId)
         when(response.code()) {
             200 -> {
                 endLoading()
@@ -99,7 +99,7 @@ class SharedViewModel: RemoteDataSourceBaseViewModel() {
     //멤버십 아이디 -> 잔액
     fun requestCardPointEx1(membershipId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
-        val response = networkManager.requestMembershipPoint(membershipId)
+        val response = networkManagerGson.requestMembershipPoint(membershipId)
         when(response.code()) {
             200 -> {
                 endLoading()
@@ -123,7 +123,7 @@ class SharedViewModel: RemoteDataSourceBaseViewModel() {
     fun requestCardPointEx2(userId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
         val membershipId = withContext(Dispatchers.IO) {
-            val response = networkManager.requestMembershipIdAndGrade(userId)
+            val response = networkManagerGson.requestMembershipIdAndGrade(userId)
             val responseBody = gson.toJson(response.body())
             val responseData = gson.fromJson(responseBody, MisResponseBodyUserId::class.java).result //TODO 예외처리 필요
             responseData!!.userId
@@ -133,7 +133,7 @@ class SharedViewModel: RemoteDataSourceBaseViewModel() {
 
     fun requestSelf04(mdn: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
-        val response = networkManager.requestSelf04(mdn)
+        val response = networkManagerGson.requestSelf04(mdn)
         when(response.code()) {
             200 -> {
                 endLoading()

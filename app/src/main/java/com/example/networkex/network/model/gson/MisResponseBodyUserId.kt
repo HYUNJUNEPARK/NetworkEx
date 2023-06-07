@@ -1,7 +1,5 @@
 package com.example.networkex.network.model.gson
 
-import com.google.gson.annotations.SerializedName
-
 data class MisResponseBodyUserId(
     val code: String?,
     val message: String?,

@@ -1,6 +1,6 @@
 package com.example.networkex.network
 
-import com.example.networkex.view.vm.SharedViewModel.Companion.ACCESS_TOKEN
+import com.example.networkex.view.vm.SharedViewModelGson.Companion.ACCESS_TOKEN
 import com.example.networkex.const.HeaderConst.ACCESS_TOKEN_BASIC
 import com.example.networkex.const.HeaderConst.ASP_NAME
 import com.example.networkex.const.HeaderConst.ASP_VALUE

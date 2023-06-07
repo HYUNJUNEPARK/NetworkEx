@@ -13,13 +13,13 @@ import com.example.networkex.R
 import com.example.networkex.view.MainActivity.Companion.TEST_USER_ID
 import com.example.networkex.databinding.FragmentA1Binding
 import com.example.networkex.view.vm.FragmentViewModel
-import com.example.networkex.view.vm.SharedViewModel
+import com.example.networkex.view.vm.SharedViewModelGson
 
 //FragmentA1, FragmentA2 : SharedViewModel, FragmentViewModel 비교
 class FragmentA1 : Fragment() {
     private var _binding : FragmentA1Binding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: SharedViewModel by activityViewModels ()
+    private val sharedViewModelGson: SharedViewModelGson by activityViewModels ()
     private val fragmentViewModel: FragmentViewModel by viewModels()
     private val loadingDialog by lazy {
         (requireActivity() as MainActivity).loadingDialog
@@ -28,14 +28,14 @@ class FragmentA1 : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_a1, container, false)
         binding.fragmentA1 = this@FragmentA1
-        binding.sharedViewModel = sharedViewModel
+        binding.sharedViewModel = sharedViewModelGson
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedViewModel.sampleData.observe(viewLifecycleOwner) { sampleData ->
+        sharedViewModelGson.sampleData.observe(viewLifecycleOwner) { sampleData ->
             binding.sampleData = sampleData.toString()
         }
 
@@ -66,7 +66,7 @@ class FragmentA1 : Fragment() {
     }
 
     fun onSharedVMButtonClicked() {
-        val liveData = sharedViewModel.paymentMethod.value
+        val liveData = sharedViewModelGson.paymentMethod.value
         binding.liveDataSVM = liveData
     }
 
