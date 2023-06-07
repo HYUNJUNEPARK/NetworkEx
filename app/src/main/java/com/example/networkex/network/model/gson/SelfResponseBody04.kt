@@ -3,9 +3,7 @@ package com.example.networkex.network.model.gson
 import com.google.gson.annotations.SerializedName
 
 data class SelfResponseBody04(
-    @SerializedName("body")
     val body: List<SelfResponseInnerBody04?>?,
-    @SerializedName("header")
     val header: List<SelfResponseInnerHeader04?>?
 )
 
@@ -28,43 +26,24 @@ data class SelfResponseInnerBody04(
 )
 
 data class DATA04(
-    @SerializedName("acntOwrnBtDt")
     val acntOwrnBtDt: String?,
-    @SerializedName("bankAcntNo")
     val bankAcntNo: String?,
-    @SerializedName("bankCd")
     val bankCd: String?,
-    @SerializedName("bankNm")
     val bankNm: String?,
-    @SerializedName("bsRegNo")
     val bsRegNo: String?,
-    @SerializedName("cardNo")
     val cardNo: String?,
-    @SerializedName("cardValdEndYymm")
     val cardValdEndYymm: String?,
-    @SerializedName("cdcmpCd")
     val cdcmpCd: String?,
-    @SerializedName("cdcmpNm")
     val cdcmpNm: String?,
-    @SerializedName("custDvCd")
     val custDvCd: String?,
-    @SerializedName("custKdCd")
     val custKdCd: String?,
-    @SerializedName("custNm")
     val custNm: String?,
-    @SerializedName("custrnmBday")
     val custrnmBday: String?,
-    @SerializedName("ipinCi")
     val ipinCi: String?,
-    @SerializedName("pymAcntNo")
     val pymAcntNo: String?,
-    @SerializedName("pymMthdCd")
     val pymMthdCd: String?,
-    @SerializedName("pymMthdNm")
     val pymMthdNm: String?,
-    @SerializedName("sysCreationDate")
     val sysCreationDate: String?,
-    @SerializedName("sysUpdateDate")
     val sysUpdateDate: String?
 )
 

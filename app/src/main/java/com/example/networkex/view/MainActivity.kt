@@ -110,7 +110,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRequestSelf04ButtonClicked() {
-        //sharedViewModel.requestSelf04(TEST_MDM)
+        sharedViewModel.requestSelf04(TEST_MDM)
+
+    }
+
+    fun onRequestKotlinxEx1() {
+        Toast.makeText(this, "Ex1", Toast.LENGTH_SHORT).show()
         sharedViewModelKotlinx.requestTest()
+    }
+
+    fun onRequestKotlinxEx2() {
+        Toast.makeText(this, "Ex2", Toast.LENGTH_SHORT).show()
     }
 }

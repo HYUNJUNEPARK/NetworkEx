@@ -11,17 +11,12 @@ data class MisResponseAuthToken(
     val tokenType: String? = null,
     @SerializedName("expires_in")
     val expiresIn: Int? = null,
-    @SerializedName("scope")
     val scope: String? = null,
-    @SerializedName("deviceId")
     val deviceId: String? = null,
     @SerializedName("SESSION")
     val session: String? = null,
-    @SerializedName("jti")
     val jti: String? = null,
-    @SerializedName("header")
     val header: List<MisResponseInnerHeaderAuthToken?>? = null,
-    @SerializedName("body")
     val body: List<MisResponseInnerBodyAuthToken?>? = null
 )
 

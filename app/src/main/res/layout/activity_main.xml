@@ -191,6 +191,58 @@
                         tools:text="10000" />
                 </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:onClick="@{()->mainActivity.onRequestKotlinxEx1()}"
+                        android:text="Kotlinx Ex1"
+                        android:textAllCaps="false"
+                        android:textSize="10dp" />
+
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:textSize="12sp"-->
+<!--                        tools:text="10000" />-->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:onClick="@{()->mainActivity.onRequestKotlinxEx2()}"
+                        android:text="Kotlinx Ex2"
+                        android:textAllCaps="false"
+                        android:textSize="10dp" />
+
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_gravity="center"-->
+                    <!--                        android:textSize="12sp"-->
+                    <!--                        tools:text="10000" />-->
+                </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"
