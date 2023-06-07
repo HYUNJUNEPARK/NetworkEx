@@ -1,5 +1,6 @@
 package com.example.networkex.view.vm
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -44,6 +45,7 @@ abstract class RemoteDataSourceBaseViewModel: ViewModel() {
             }
             else -> { //NullPointException, ClassCastException
                 throwable.printStackTrace()
+                Log.e("testLog", "Exception: ${throwable.cause} // ${throwable.message}")
                 _responseState.postValue(ResponseState.FAIL)
             }
         }

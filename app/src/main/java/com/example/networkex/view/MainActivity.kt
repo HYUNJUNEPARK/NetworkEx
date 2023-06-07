@@ -111,7 +111,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRequestKotlinxEx1() {
-        sharedViewModelKotlinx.requestMembershipPoint("50001027812")
+        //sharedViewModelKotlinx.requestMembershipPoint("50001027812")
+        sharedViewModelKotlinx.requestTest("ln-12121212")
     }
 
     fun onRequestKotlinxEx2() {

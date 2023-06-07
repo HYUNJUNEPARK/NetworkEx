@@ -1,8 +1,6 @@
 package com.example.networkex.network
 
 import com.example.networkex.const.UrlConst.POINT_INFO
-import com.example.networkex.network.model.gson.KonaCardRequestBodyUserId
-import com.example.networkex.network.model.gson.KonaCardResponseBodyPointInfo
 import com.example.networkex.network.model.kotlinx.KonaCardRequestBodyUserIdKotlinx
 import com.example.networkex.network.model.kotlinx.KonaCardResponseBodyPointInfoKotlinx
 import com.example.networkex.network.model.kotlinx.Repo
