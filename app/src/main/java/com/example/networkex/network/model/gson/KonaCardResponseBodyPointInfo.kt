@@ -1,4 +1,4 @@
-package com.konai.mis_apitester.network.model.api.tmp
+package com.example.networkex.network.model.gson
 
 
 import com.google.gson.annotations.SerializedName

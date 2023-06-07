@@ -1,4 +1,4 @@
-package com.example.networkex.network.model
+package com.example.networkex.network.model.gson
 
 import com.example.networkex.const.ApiConst.APP_TYPE
 import com.example.networkex.const.ApiConst.ENT_ID

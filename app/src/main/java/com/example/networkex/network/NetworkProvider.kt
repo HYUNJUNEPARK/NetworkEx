@@ -22,7 +22,7 @@ object NetworkProvider {
             .build()
     }
 
-    fun provideRetrofitKotlinXConverter(): Retrofit {
+    fun provideRetrofitKotlinxConverter(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(json.asConverterFactory("application/json".toMediaTypeOrNull()!!))

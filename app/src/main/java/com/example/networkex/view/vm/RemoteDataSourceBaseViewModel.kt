@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.networkex.enums.ResponseState
 import com.example.networkex.network.NetworkManager
+import com.example.networkex.network.NetworkManagerKotlinx
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -15,6 +16,7 @@ import java.net.UnknownHostException
 
 abstract class RemoteDataSourceBaseViewModel: ViewModel() {
     protected val networkManager = NetworkManager()
+    protected val networkManagerKotlinx = NetworkManagerKotlinx()
     protected val gson = Gson()
 
     private var _isLoading = MutableLiveData<Boolean>()

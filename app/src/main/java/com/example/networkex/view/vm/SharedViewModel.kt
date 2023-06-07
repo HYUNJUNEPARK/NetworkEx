@@ -5,12 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.networkex.enums.ResponseState
-import com.example.networkex.network.model.MisResponseAuthToken
-import com.example.networkex.network.model.MisResponseBodyUserId
-import com.example.networkex.network.model.SelfResponseBody04
-import com.example.networkex.network.model.UserIdResult
+import com.example.networkex.network.model.gson.MisResponseAuthToken
+import com.example.networkex.network.model.gson.MisResponseBodyUserId
+import com.example.networkex.network.model.gson.SelfResponseBody04
+import com.example.networkex.network.model.gson.UserIdResult
 import com.example.networkex.view.MainActivity.Companion.TAG
-import com.konai.mis_apitester.network.model.api.tmp.KonaCardResponseBodyPointInfo
+import com.example.networkex.network.model.gson.KonaCardResponseBodyPointInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

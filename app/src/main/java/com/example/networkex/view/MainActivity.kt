@@ -2,38 +2,27 @@ package com.example.networkex.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.example.networkex.R
 import com.example.networkex.databinding.ActivityMainBinding
-import com.example.networkex.network.NetworkKotlinXManager
+import com.example.networkex.network.NetworkManagerKotlinx
 import com.example.networkex.util.AppUtil.makeBase64
 import com.example.networkex.util.AppUtil.makeSHA256AndBase64
 import com.example.networkex.view.vm.SharedViewModel
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.await
-import retrofit2.http.GET
-import retrofit2.http.Path
+import com.example.networkex.view.vm.SharedViewModelKotlinx
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val sharedViewModel: SharedViewModel by viewModels ()
+    private val sharedViewModelKotlinx: SharedViewModelKotlinx by viewModels ()
     val loadingDialog by lazy {
         LoadingDialogFragment().apply { setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogTheme) }
     }
 
-    private val testNetworkManager = NetworkKotlinXManager()
+    private val testNetworkManager = NetworkManagerKotlinx()
 
     companion object {
         const val TAG = "testLog"
@@ -81,6 +70,10 @@ class MainActivity : AppCompatActivity() {
             binding.paymentMethod = it
         }
 
+        sharedViewModelKotlinx.responseState.observe(this@MainActivity) { responseState ->
+            Toast.makeText(this, responseState.name, Toast.LENGTH_SHORT).show()
+        }
+
         supportFragmentManager.beginTransaction().apply {
             add(R.id.fragment_container_a1, FragmentA1())
             add(R.id.fragment_container_a2, FragmentA2())
@@ -118,6 +111,6 @@ class MainActivity : AppCompatActivity() {
 
     fun onRequestSelf04ButtonClicked() {
         //sharedViewModel.requestSelf04(TEST_MDM)
-        testNetworkManager.test()
+        sharedViewModelKotlinx.requestTest()
     }
 }
