@@ -112,11 +112,10 @@ class MainActivity : AppCompatActivity() {
 
     fun onRequestKotlinxEx1() {
         //sharedViewModelKotlinx.requestMembershipPoint("50001027812")
-        sharedViewModelKotlinx.requestTest("ln-12121212")
+        sharedViewModelKotlinx.requestTest("ln-12")
     }
 
     fun onRequestKotlinxEx2() {
         Toast.makeText(this, "Ex2", Toast.LENGTH_SHORT).show()
-
     }
 }

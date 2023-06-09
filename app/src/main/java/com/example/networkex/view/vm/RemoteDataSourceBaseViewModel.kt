@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.networkex.enums.ResponseState
+import com.example.networkex.enums.ResponseExceptionState
 import com.example.networkex.network.gson.NetworkManagerGson
 import com.example.networkex.network.kotlinx.NetworkManagerKotlinx
 import com.google.gson.Gson
@@ -23,8 +23,8 @@ abstract class RemoteDataSourceBaseViewModel: ViewModel() {
     private var _isLoading = MutableLiveData<Boolean>()
     val isLoading : LiveData<Boolean> get() = _isLoading
 
-    protected var _responseState = MutableLiveData<ResponseState>()
-    val responseState : LiveData<ResponseState> get() = _responseState
+    protected var _responseState = MutableLiveData<ResponseExceptionState>()
+    val responseState : LiveData<ResponseExceptionState> get() = _responseState
 
     protected fun startLoading() = viewModelScope.launch {
         _isLoading.value = true
@@ -38,15 +38,15 @@ abstract class RemoteDataSourceBaseViewModel: ViewModel() {
         endLoading()
         when (throwable) {
             is ConnectException, is UnknownHostException -> {
-                _responseState.postValue(ResponseState.BAD_INTERNET)
+                _responseState.postValue(ResponseExceptionState.BAD_INTERNET)
             }
             is SocketTimeoutException -> {
-                _responseState.postValue(ResponseState.TIME_OUT)
+                _responseState.postValue(ResponseExceptionState.TIME_OUT)
             }
             else -> { //NullPointException, ClassCastException
                 throwable.printStackTrace()
                 Log.e("testLog", "Exception: ${throwable.cause} // ${throwable.message}")
-                _responseState.postValue(ResponseState.FAIL)
+                _responseState.postValue(ResponseExceptionState.FAIL)
             }
         }
     }

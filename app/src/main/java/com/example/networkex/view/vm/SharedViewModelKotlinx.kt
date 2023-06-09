@@ -22,12 +22,9 @@ class SharedViewModelKotlinx: RemoteDataSourceBaseViewModel() {
                 val responseBody = response.errorBody().toString()
                 val responseBody2 = response.body()
                 //val JsonObject = JSONObject(responseBody)
-
                 val jObjError = JSONObject(response.errorBody()!!.string())
                 val tt = jObjError as RepoException
-
                 Log.d("testLog", "requestTest: $responseBody // $jObjError")
-
             }
         }
     }

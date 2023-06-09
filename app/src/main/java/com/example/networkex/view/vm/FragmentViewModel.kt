@@ -3,7 +3,7 @@ package com.example.networkex.view.vm
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.networkex.enums.ResponseState
+import com.example.networkex.enums.ResponseExceptionState
 import com.example.networkex.network.model.gson.MisResponseBodyUserId
 import com.example.networkex.network.model.gson.UserIdResult
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +34,7 @@ class FragmentViewModel: RemoteDataSourceBaseViewModel() {
             }
             else -> {
                 endLoading()
-                _responseState.postValue(ResponseState.NOT_CODE_200)
+                _responseState.postValue(ResponseExceptionState.NOT_CODE_200)
             }
         }
     }
