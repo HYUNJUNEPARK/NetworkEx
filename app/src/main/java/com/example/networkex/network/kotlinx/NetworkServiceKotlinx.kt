@@ -1,4 +1,4 @@
-package com.example.networkex.network
+package com.example.networkex.network.kotlinx
 
 import com.example.networkex.const.UrlConst.POINT_INFO
 import com.example.networkex.network.model.kotlinx.KonaCardRequestBodyUserIdKotlinx

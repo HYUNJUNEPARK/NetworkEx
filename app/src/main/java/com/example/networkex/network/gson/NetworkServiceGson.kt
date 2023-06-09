@@ -1,4 +1,4 @@
-package com.example.networkex.network
+package com.example.networkex.network.gson
 
 import com.example.networkex.const.UrlConst.OAUTH
 import com.example.networkex.const.UrlConst.POINT_INFO

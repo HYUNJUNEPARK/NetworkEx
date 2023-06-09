@@ -1,4 +1,4 @@
-package com.example.networkex.network
+package com.example.networkex.network.kotlinx
 
 import com.example.networkex.network.NetworkInterceptor.konaCardInterceptor
 import com.example.networkex.network.NetworkProvider.provideRetrofitKotlinxConverter
@@ -16,7 +16,8 @@ class NetworkManagerKotlinx {
 
     //KONA CARD
     fun requestMembershipPoint(membershipId: String): Response<KonaCardResponseBodyPointInfoKotlinx> {
-        val networkService = provideRetrofitKotlinxConverter(konaCardInterceptor).create(NetworkServiceKotlinx::class.java)
+        val networkService = provideRetrofitKotlinxConverter(konaCardInterceptor).create(
+            NetworkServiceKotlinx::class.java)
         return networkService.pointInfo(KonaCardRequestBodyUserIdKotlinx(membershipId)).execute()
     }
 }

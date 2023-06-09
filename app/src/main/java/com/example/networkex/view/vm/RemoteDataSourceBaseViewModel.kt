@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.networkex.enums.ResponseState
-import com.example.networkex.network.NetworkManagerGson
-import com.example.networkex.network.NetworkManagerKotlinx
+import com.example.networkex.network.gson.NetworkManagerGson
+import com.example.networkex.network.kotlinx.NetworkManagerKotlinx
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
