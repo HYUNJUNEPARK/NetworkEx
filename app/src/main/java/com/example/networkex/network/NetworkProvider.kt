@@ -1,5 +1,6 @@
 package com.example.networkex.network
 
+import com.example.networkex.const.UrlConst.DEV_SERVER_URL
 import com.example.networkex.const.UrlConst.REL_SERVER_URL
 import com.example.networkex.network.NetworkInterceptor.provideOkHttpClient
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -16,7 +17,7 @@ object NetworkProvider {
 
     fun provideRetrofit(interceptor: Interceptor): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(REL_SERVER_URL)
+            .baseUrl(DEV_SERVER_URL)
             .client(provideOkHttpClient(interceptor))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -24,7 +25,7 @@ object NetworkProvider {
 
     fun provideRetrofitKotlinxConverter(interceptor: Interceptor): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(REL_SERVER_URL)
+            .baseUrl(DEV_SERVER_URL)
             .client(provideOkHttpClient(interceptor))
             .addConverterFactory(json.asConverterFactory("application/json".toMediaTypeOrNull()!!))
             .build()

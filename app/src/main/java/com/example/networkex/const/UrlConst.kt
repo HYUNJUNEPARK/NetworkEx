@@ -3,6 +3,7 @@ package com.example.networkex.const
 object UrlConst {
     //URL
     const val REL_SERVER_URL = "http://220.72.230.73:8090"
+    const val DEV_SERVER_URL = "http://220.72.230.41:8090"
     const val PROD_SERVER_URL = "https://api.mobilemona.co.kr"
 
     //KONA_CARD
