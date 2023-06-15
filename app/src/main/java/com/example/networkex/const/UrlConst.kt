@@ -21,4 +21,5 @@ object UrlConst {
     const val OAUTH = "oauth/token"
     const val ACCOUNT_SEARCHING01 = "real/konai/mona/huser/hm/accountsearching"
     const val USER_ID = "api/get/userId"
+    const val MEMBERSHIP_INFO = "api/membership/info"
 }

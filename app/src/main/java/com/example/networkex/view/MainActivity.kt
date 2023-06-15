@@ -82,12 +82,12 @@ class MainActivity : AppCompatActivity() {
         val userId = if (binding.activityMainEtId.text.isEmpty()) {
             makeBase64(TEST_USER_ID)
         } else {
-            binding.activityMainEtId.text.toString()
+            makeBase64(binding.activityMainEtId.text.toString())
         }
         val pw = if (binding.activityMainEtPw.text.isEmpty()) {
             makeSHA256AndBase64(TEST_USER_PW)
         } else {
-            binding.activityMainEtPw.text.toString()
+            makeSHA256AndBase64(binding.activityMainEtPw.text.toString())
         }
 
         sharedViewModelGson.requestAccessToken(

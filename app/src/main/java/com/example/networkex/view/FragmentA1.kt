@@ -71,6 +71,7 @@ class FragmentA1 : Fragment() {
     }
 
     fun onFragmentVMButtonClicked() {
-        fragmentViewModel.requestMembershipIdAndGrade(TEST_USER_ID)
+        //fragmentViewModel.requestMembershipIdAndGrade(TEST_USER_ID)
+        fragmentViewModel.requestMembershipInfo()
     }
 }

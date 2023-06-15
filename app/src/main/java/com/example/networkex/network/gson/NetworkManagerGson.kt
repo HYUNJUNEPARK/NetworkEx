@@ -49,6 +49,13 @@ class NetworkManagerGson {
         return networkService.getUserMembershipId(userId).execute()
     }
 
+    fun requestMembershipInfo(): Response<Any> {
+        val networkService: NetworkServiceGson = provideRetrofit(commonInterceptor).create(
+            NetworkServiceGson::class.java)
+        return networkService.getUserMembershipInfo().execute()
+    }
+
+
     //SELF CARE
     //납부 방법 조회
     fun requestSelf04(mdn: String): Response<Any> {

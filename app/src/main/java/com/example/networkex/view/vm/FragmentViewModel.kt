@@ -38,4 +38,18 @@ class FragmentViewModel: RemoteDataSourceBaseViewModel() {
             }
         }
     }
+
+    fun requestMembershipInfo() = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
+        startLoading()
+        val response = networkManagerGson.requestMembershipInfo()
+        when(response.code()) {
+            200 -> {
+                endLoading()
+            }
+            else -> {
+                endLoading()
+            }
+        }
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.networkex.network.gson
 
+import com.example.networkex.const.UrlConst.MEMBERSHIP_INFO
 import com.example.networkex.const.UrlConst.OAUTH
 import com.example.networkex.const.UrlConst.POINT_INFO
 import com.example.networkex.const.UrlConst.SELF_CARE_V1
@@ -31,6 +32,11 @@ interface NetworkServiceGson {
         @Path("id")
         id : String
     ): Call<Any>
+
+
+    //API 변경 api/get/userId/{{loginId}} -> /api/membership/info
+    @GET(MEMBERSHIP_INFO)
+    fun getUserMembershipInfo(): Call<Any>
 
     //SELF_CARE
     @POST(SELF_CARE_V1)
