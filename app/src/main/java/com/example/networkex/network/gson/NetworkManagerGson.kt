@@ -44,8 +44,7 @@ class NetworkManagerGson {
     }
 
     fun requestMembershipIdAndGrade(userId: String): Response<Any> {
-        val networkService: NetworkServiceGson = provideRetrofit(commonInterceptor).create(
-            NetworkServiceGson::class.java)
+        val networkService: NetworkServiceGson = provideRetrofit(commonInterceptor).create(NetworkServiceGson::class.java)
         return networkService.getUserMembershipId(userId).execute()
     }
 

@@ -131,6 +131,56 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
         requestCardPointEx1(membershipId!!)
     }
 
+
+    //이메일 -> 멤버십 아이디 -> 잔액(One Scope Example)
+    fun requestCardPointEx3(userId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
+        startLoading()
+        val responseUserId = networkManagerGson.requestMembershipIdAndGrade(userId)
+        val membershipId = when(responseUserId.code()) {
+            200 -> {
+                val responseBody = gson.toJson(responseUserId.body())
+                val responseData = gson.fromJson(responseBody, MisResponseBodyUserId::class.java).result
+                responseData!!.userId!!
+            }
+            else -> {
+                endLoading()
+                throw IllegalArgumentException()
+            }
+        }
+
+        val responsePoint = networkManagerGson.requestMembershipPoint(membershipId)
+        val point = when(responseUserId.code()) {
+            200 -> {
+                val responseBody = gson.toJson(responsePoint.body())
+                val responseData = gson.fromJson(responseBody, KonaCardResponseBodyPointInfo::class.java)
+                val pointAmount = if (responseData.pointAmount == null) {
+                    "-"
+                } else {
+                    responseData.pointAmount.toString()
+                }
+                pointAmount
+            }
+            else -> {
+                endLoading()
+                throw  IllegalArgumentException()
+            }
+        }
+        endLoading()
+        Log.d(TAG, "RESULT POINT : $point")
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     fun requestSelf04(mdn: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
         val response = networkManagerGson.requestSelf04(mdn)

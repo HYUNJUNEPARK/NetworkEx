@@ -16,8 +16,7 @@ class NetworkManagerKotlinx {
 
     //KONA CARD
     fun requestMembershipPoint(membershipId: String): Response<KonaCardResponseBodyPointInfoKotlinx> {
-        val networkService = provideRetrofitKotlinxConverter(konaCardInterceptor).create(
-            NetworkServiceKotlinx::class.java)
+        val networkService = provideRetrofitKotlinxConverter(konaCardInterceptor).create(NetworkServiceKotlinx::class.java)
         return networkService.pointInfo(KonaCardRequestBodyUserIdKotlinx(membershipId)).execute()
     }
 }
