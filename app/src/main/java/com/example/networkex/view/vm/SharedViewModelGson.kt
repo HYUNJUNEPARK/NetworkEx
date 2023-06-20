@@ -220,7 +220,35 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
 
     //[4] 이메일 -> 멤버십 아이디 -> 잔액(Split Scope Example && Task Async)
     fun requestCardPointEx5(userId: String) = viewModelScope.launch {
+        launch {
+            val membershipId = getUserId(userId)
+            val point = getPoint(membershipId)
+            Log.d(TAG, "requestCardPointEx5-1 point : $point")
+        }
 
+        launch {
+            val membershipId1 = getUserId(userId)
+            val point1 = getPoint(membershipId1)
+            Log.d(TAG, "requestCardPointEx5-2 point : $point1")
+        }
+
+        launch {
+            val membershipId2 = getUserId(userId)
+            val point2 = getPoint(membershipId2)
+            Log.d(TAG, "requestCardPointEx5-3 point : $point2")
+        }
+
+        launch {
+            val membershipId3 = getUserId(userId)
+            val point3 = getPoint(membershipId3)
+            Log.d(TAG, "requestCardPointEx5-4 point : $point3")
+        }
+
+        launch {
+            val membershipId4 = getUserId(userId)
+            val point4 = getPoint(membershipId4)
+            Log.d(TAG, "requestCardPointEx5-5 point : $point4")
+        }
     }
 
     fun requestSelf04(mdn: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
