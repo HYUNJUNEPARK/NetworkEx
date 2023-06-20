@@ -103,7 +103,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRequestMembershipPointButtonClicked() {
-        sharedViewModelGson.requestCardPointEx2(TEST_USER_ID)
+        //sharedViewModelGson.requestCardPointEx2(TEST_USER_ID)
+        sharedViewModelGson.requestCardPointEx4(TEST_USER_ID)
     }
 
     fun onRequestSelf04ButtonClicked() {

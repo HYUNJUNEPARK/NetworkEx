@@ -12,6 +12,7 @@ import com.example.networkex.network.model.gson.UserIdResult
 import com.example.networkex.view.MainActivity.Companion.TAG
 import com.example.networkex.network.model.gson.KonaCardResponseBodyPointInfo
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -119,7 +120,7 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
         }
     }
 
-    //이메일 -> 멤버십 아이디 -> 잔액
+    //[1] 이메일 -> 멤버십 아이디 -> 잔액
     fun requestCardPointEx2(userId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
         val membershipId = withContext(Dispatchers.IO) {
@@ -132,7 +133,7 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
     }
 
 
-    //이메일 -> 멤버십 아이디 -> 잔액(One Scope Example)
+    //[2] 이메일 -> 멤버십 아이디 -> 잔액(One Scope Example)
     fun requestCardPointEx3(userId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
         val responseUserId = networkManagerGson.requestMembershipIdAndGrade(userId)
@@ -169,17 +170,58 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
         Log.d(TAG, "RESULT POINT : $point")
     }
 
+    //[3] 이메일 -> 멤버십 아이디 -> 잔액(Split Scope Example)
+    fun requestCardPointEx4(userId: String) = viewModelScope.launch {
+        val membershipId = getUserId(userId)
+        val point = getPoint(membershipId)
+        Log.d(TAG, "requestCardPointEx4 point : $point")
+    }
 
+    suspend fun getUserId(userId: String): String {
+        val membershipId = withContext(Dispatchers.IO + exceptionHandler) {
+            val responseUserId = networkManagerGson.requestMembershipIdAndGrade(userId)
+            when(responseUserId.code()) {
+                200 -> {
+                    val responseBody = gson.toJson(responseUserId.body())
+                    val responseData = gson.fromJson(responseBody, MisResponseBodyUserId::class.java).result
+                    responseData!!.userId!!
+                }
+                else -> {
+                    endLoading()
+                    throw IllegalArgumentException()
+                }
+            }
+        }
+        return membershipId
+    }
 
+    suspend fun getPoint(membershipId: String): String {
+        val point = withContext(Dispatchers.IO + exceptionHandler) {
+            val responsePoint = networkManagerGson.requestMembershipPoint(membershipId)
+            when(responsePoint.code()) {
+                200 -> {
+                    val responseBody = gson.toJson(responsePoint.body())
+                    val responseData = gson.fromJson(responseBody, KonaCardResponseBodyPointInfo::class.java)
+                    val pointAmount = if (responseData.pointAmount == null) {
+                        "-"
+                    } else {
+                        responseData.pointAmount.toString()
+                    }
+                    pointAmount
+                }
+                else -> {
+                    endLoading()
+                    throw  IllegalArgumentException()
+                }
+            }
+        }
+        return point
+    }
 
+    //[4] 이메일 -> 멤버십 아이디 -> 잔액(Split Scope Example && Task Async)
+    fun requestCardPointEx5(userId: String) = viewModelScope.launch {
 
-
-
-
-
-
-
-
+    }
 
     fun requestSelf04(mdn: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
