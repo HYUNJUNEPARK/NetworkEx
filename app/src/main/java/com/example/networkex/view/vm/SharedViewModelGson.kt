@@ -251,6 +251,47 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
         }
     }
 
+
+    //[5] 이메일 -> 멤버십 아이디 -> 잔액(Split Scope Example && Task Async) - 마지막에 결과 값이 필요한 경우
+    fun requestCardPointEx6(userId: String) = viewModelScope.launch {
+        val point = async {
+            val membershipId = getUserId(userId)
+            val point = getPoint(membershipId)
+            Log.d(TAG, "requestCardPointEx5-1 point : $point")
+            point
+        }
+
+        val point1 = async {
+            val membershipId1 = getUserId(userId)
+            val point1 = getPoint(membershipId1)
+            Log.d(TAG, "requestCardPointEx5-2 point : $point1")
+            point1
+        }
+
+        val point2 = async {
+            val membershipId2 = getUserId(userId)
+            val point2 = getPoint(membershipId2)
+            Log.d(TAG, "requestCardPointEx5-3 point : $point2")
+            point2
+        }
+
+        val point3 = async {
+            val membershipId3 = getUserId(userId)
+            val point3 = getPoint(membershipId3)
+            Log.d(TAG, "requestCardPointEx5-4 point : $point3")
+            point3
+        }
+
+        val point4 = async {
+            val membershipId4 = getUserId(userId)
+            val point4 = getPoint(membershipId4)
+            Log.d(TAG, "requestCardPointEx5-5 point : $point4")
+            point4
+        }
+
+        Log.d(TAG, "requestCardPointEx6 Result : ${point.await()} / ${point1.await()} / ${point2.await()} / ${point3.await()} / ${point4.await()}")
+    }
+
     fun requestSelf04(mdn: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()
         val response = networkManagerGson.requestSelf04(mdn)
