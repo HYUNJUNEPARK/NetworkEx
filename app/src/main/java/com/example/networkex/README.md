@@ -21,3 +21,9 @@ https://develop-hong.tistory.com/4
 
 안드로이드 buildTypes으로 실제 버전, 개발 버전 구분하기
 https://develop-hong.tistory.com/6
+
+Timber
+https://jhdroid.tistory.com/9
+
+OkHttpClient Logging
+https://www.youtube.com/watch?v=ywgPsjxtgz8

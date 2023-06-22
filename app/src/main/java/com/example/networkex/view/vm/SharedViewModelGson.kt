@@ -15,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
     companion object {
@@ -171,10 +172,10 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
     }
 
     //[3] 이메일 -> 멤버십 아이디 -> 잔액(Split Scope Example)
-    fun requestCardPointEx4(userId: String) = viewModelScope.launch {
+    fun requestCardPointEx4(userId: String) = viewModelScope.launch(exceptionHandler) {
         val membershipId = getUserId(userId)
         val point = getPoint(membershipId)
-        Log.d(TAG, "requestCardPointEx4 point : $point")
+        Timber.d("requestCardPointEx4 point : $point")
     }
 
     suspend fun getUserId(userId: String): String {
@@ -253,7 +254,7 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
 
 
     //[5] 이메일 -> 멤버십 아이디 -> 잔액(Split Scope Example && Task Async) - 마지막에 결과 값이 필요한 경우
-    fun requestCardPointEx6(userId: String) = viewModelScope.launch {
+    fun requestCardPointEx6(userId: String) = viewModelScope.launch(exceptionHandler) {
         val point = async {
             val membershipId = getUserId(userId)
             val point = getPoint(membershipId)

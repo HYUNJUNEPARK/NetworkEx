@@ -11,6 +11,7 @@ import com.example.networkex.network.kotlinx.NetworkManagerKotlinx
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -36,6 +37,7 @@ abstract class RemoteDataSourceBaseViewModel: ViewModel() {
 
     protected val exceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         endLoading()
+        Timber.e("$throwable")
         when (throwable) {
             is ConnectException, is UnknownHostException -> {
                 _responseState.postValue(ResponseExceptionState.BAD_INTERNET)
@@ -45,7 +47,6 @@ abstract class RemoteDataSourceBaseViewModel: ViewModel() {
             }
             else -> { //NullPointException, ClassCastException
                 throwable.printStackTrace()
-                Log.e("testLog", "Exception: ${throwable.cause} // ${throwable.message}")
                 _responseState.postValue(ResponseExceptionState.FAIL)
             }
         }
