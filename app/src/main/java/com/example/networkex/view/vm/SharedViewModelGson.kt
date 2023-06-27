@@ -98,6 +98,35 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
         }
     }
 
+    //토큰을 파라미터로 넣어준 인터페이스 샘플
+    fun requestEx0(membershipId: String, authToken: String?) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
+        if (authToken == null) {
+            Timber.e("AUTH TOKEN NULL")
+            return@launch
+        }
+
+        startLoading()
+        val response = networkManagerGson.requestMembershipPoint(membershipId, authToken)
+        when(response.code()) {
+            200 -> {
+                endLoading()
+
+//                val responseBody = gson.toJson(response.body())
+//                val responseData = gson.fromJson(responseBody, KonaCardResponseBodyPointInfo::class.java)?: return@launch //TODO 예외처리 필요
+//                val pointAmount = if (responseData.pointAmount == null) {
+//                    "-"
+//                } else {
+//                    responseData.pointAmount.toString()
+//                }
+//                _membershipPoint.postValue(pointAmount)
+            }
+            else ->{
+                endLoading()
+                _responseState.postValue(ResponseExceptionState.NOT_CODE_200)
+            }
+        }
+    }
+
     //멤버십 아이디 -> 잔액
     fun requestCardPointEx1(membershipId: String) = viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
         startLoading()

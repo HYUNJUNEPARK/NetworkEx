@@ -11,6 +11,7 @@ import com.example.networkex.databinding.ActivityMainBinding
 import com.example.networkex.util.AppUtil.makeBase64
 import com.example.networkex.util.AppUtil.makeSHA256AndBase64
 import com.example.networkex.view.vm.SharedViewModelGson
+import com.example.networkex.view.vm.SharedViewModelGson.Companion.ACCESS_TOKEN
 import com.example.networkex.view.vm.SharedViewModelKotlinx
 
 class MainActivity : AppCompatActivity() {
@@ -104,9 +105,11 @@ class MainActivity : AppCompatActivity() {
 
     fun onRequestMembershipPointButtonClicked() {
         //sharedViewModelGson.requestCardPointEx2(TEST_USER_ID)
-        sharedViewModelGson.requestCardPointEx4(TEST_USER_ID)
+        //sharedViewModelGson.requestCardPointEx4(TEST_USER_ID)
         //sharedViewModelGson.requestCardPointEx5(TEST_USER_ID)
         //sharedViewModelGson.requestCardPointEx6(TEST_USER_ID)
+
+        sharedViewModelGson.requestEx0(TEST_USER_ID, ACCESS_TOKEN)
     }
 
     fun onRequestSelf04ButtonClicked() {

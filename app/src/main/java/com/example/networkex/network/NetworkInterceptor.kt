@@ -28,6 +28,19 @@ object NetworkInterceptor {
         }
     }
 
+    fun konaCardInterceptor(authToken: String): Interceptor {
+        return Interceptor { chain ->
+            with(chain) {
+                val request = request().newBuilder()
+                    .addHeader(AUTHORIZATION_NAME, authToken)
+                    .addHeader(TRANSACTION_ID, getTransactionId())
+                    .build()
+                proceed(request)
+            }
+        }
+    }
+
+
     val konaCardInterceptor = Interceptor { chain ->
         with(chain) {
             val request = request().newBuilder()

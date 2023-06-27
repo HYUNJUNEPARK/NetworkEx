@@ -2,14 +2,11 @@ package com.example.networkex.network.gson
 
 import com.example.networkex.const.ApiConst.SELF04_CODE
 import com.example.networkex.const.ApiConst.SELF04_HEADER_MSG_TYPE
-import com.example.networkex.network.model.gson.KonaCardRequestBodyUserId
-import com.example.networkex.network.model.gson.SelfRequestBody
-import com.example.networkex.network.model.gson.SelfRequestInnerBody
-import com.example.networkex.network.model.gson.SelfRequestInnerHeader
 import com.example.networkex.network.NetworkInterceptor.commonInterceptor
 import com.example.networkex.network.NetworkInterceptor.konaCardInterceptor
 import com.example.networkex.network.NetworkInterceptor.misAuthInterceptor
 import com.example.networkex.network.NetworkProvider.provideRetrofit
+import com.example.networkex.network.model.gson.*
 import com.example.networkex.util.NetworkUtil
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
@@ -19,8 +16,13 @@ import retrofit2.Response
 class NetworkManagerGson {
     //KONA CARD
     fun requestMembershipPoint(membershipId: String): Response<Any> {
-        val networkService: NetworkServiceGson = provideRetrofit(konaCardInterceptor).create(
-            NetworkServiceGson::class.java)
+        val networkService: NetworkServiceGson = provideRetrofit(konaCardInterceptor).create(NetworkServiceGson::class.java)
+        return networkService.pointInfo(KonaCardRequestBodyUserId(membershipId)).execute()
+    }
+
+    //토큰을 파라미터로 넣어준 인터페이스 샘플
+    fun requestMembershipPoint(membershipId: String, authToken: String): Response<Any> {
+        val networkService: NetworkServiceGson = provideRetrofit(konaCardInterceptor(authToken)).create(NetworkServiceGson::class.java)
         return networkService.pointInfo(KonaCardRequestBodyUserId(membershipId)).execute()
     }
 
