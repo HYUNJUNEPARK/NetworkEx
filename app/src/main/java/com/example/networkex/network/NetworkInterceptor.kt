@@ -5,13 +5,26 @@ import com.example.networkex.view.vm.SharedViewModelGson.Companion.ACCESS_TOKEN
 import com.example.networkex.const.HeaderConst.ACCESS_TOKEN_BASIC
 import com.example.networkex.const.HeaderConst.AUTHORIZATION_NAME
 import com.example.networkex.const.HeaderConst.TRANSACTION_ID
+import com.example.networkex.const.UrlConst
+import com.example.networkex.const.UrlConst.REL_SERVER_URL
+import com.example.networkex.network.gson.NetworkManagerGson
+import com.example.networkex.network.model.gson.MisResponseAuthToken
+import com.example.networkex.util.AppUtil
+import com.example.networkex.util.AppUtil.makeBase64
+import com.example.networkex.util.AppUtil.makeSHA256AndBase64
 import com.example.networkex.util.NetworkUtil.getTransactionId
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
+import com.example.networkex.view.MainActivity
+import com.example.networkex.view.MainActivity.Companion.TEST_USER_ID
+import com.example.networkex.view.MainActivity.Companion.TEST_USER_PW
+import com.google.gson.Gson
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 object NetworkInterceptor {
+    private val gson = Gson()
+
     fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient {
         return OkHttpClient.Builder().run {
             connectTimeout(30, TimeUnit.SECONDS)
@@ -24,9 +37,47 @@ object NetworkInterceptor {
                     client.addInterceptor(logging)
                 }
             }
+            authenticator(object : Authenticator {
+                override fun authenticate(route: Route?, response: Response): Request? {
+                    if (response.code == 401) {
+                        Timber.d("401")
+
+                        val userId = makeBase64(TEST_USER_ID)
+                        val pw = makeSHA256AndBase64(TEST_USER_PW)
+
+                        val _response = NetworkManagerGson().requestAccessToken(userId, pw, "deviceId1234", "pushToken1234")
+                        when(_response.code()) {
+                            200 -> {
+                                val responseBody = gson.toJson(_response.body())
+                                val responseData = gson.fromJson(responseBody, MisResponseAuthToken::class.java)
+                                val accessToken = "${responseData.accessToken}"
+                                ACCESS_TOKEN = accessToken
+                                return getRequest(response, accessToken)
+
+                            }
+                            else -> {
+                                return null
+                            }
+                        }
+                    }
+                    return null
+                }
+            })
             build()
         }
     }
+
+    private fun getRequest(response: Response, token: String): Request {
+        Timber.d("getRequest : $response // token : $token")
+
+        return response.request
+            .newBuilder()
+            .removeHeader(AUTHORIZATION_NAME)
+            .addHeader(AUTHORIZATION_NAME, "Bearer $token")
+            .build()
+    }
+
+
 
     fun konaCardInterceptor(authToken: String): Interceptor {
         return Interceptor { chain ->

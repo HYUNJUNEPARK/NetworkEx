@@ -61,7 +61,9 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
                 endLoading()
                 val responseBody = gson.toJson(response.body())
                 val responseData = gson.fromJson(responseBody, MisResponseAuthToken::class.java)
-                val accessToken = "Bearer ${responseData.accessToken}"
+
+
+                val accessToken = "Bearer ${responseData.accessToken}A" //TODO OCCUR 401
                 _accessToken.postValue(accessToken)
                 ACCESS_TOKEN = accessToken
             }
@@ -110,15 +112,6 @@ class SharedViewModelGson: RemoteDataSourceBaseViewModel() {
         when(response.code()) {
             200 -> {
                 endLoading()
-
-//                val responseBody = gson.toJson(response.body())
-//                val responseData = gson.fromJson(responseBody, KonaCardResponseBodyPointInfo::class.java)?: return@launch //TODO 예외처리 필요
-//                val pointAmount = if (responseData.pointAmount == null) {
-//                    "-"
-//                } else {
-//                    responseData.pointAmount.toString()
-//                }
-//                _membershipPoint.postValue(pointAmount)
             }
             else ->{
                 endLoading()
