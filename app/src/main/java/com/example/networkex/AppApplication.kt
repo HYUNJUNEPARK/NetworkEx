@@ -12,6 +12,6 @@ class AppApplication: Application() {
 
 class TimberDebugTree : Timber.DebugTree() {
     override fun createStackElementTag(element: StackTraceElement): String? {
-        return "mTestLog:${element.fileName}:${element.lineNumber}#${element.methodName}"
+        return "testLog:${element.fileName}:${element.lineNumber}#${element.methodName}"
     }
 }

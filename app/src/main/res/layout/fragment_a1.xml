@@ -7,7 +7,7 @@
 
         <variable
             name="sharedViewModel"
-            type="com.example.networkex.view.vm.SharedViewModelGson" />
+            type="com.example.networkex.legacy.view.vm.SharedViewModelGson" />
 
         <variable
             name="sampleData"
@@ -15,7 +15,7 @@
 
         <variable
             name="fragmentA1"
-            type="com.example.networkex.view.FragmentA1" />
+            type="com.example.networkex.legacy.view.FragmentA1" />
 
         <variable
             name="liveDataSVM"
@@ -29,7 +29,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.FragmentA1">
+        tools:context=".legacy.view.FragmentA1">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"

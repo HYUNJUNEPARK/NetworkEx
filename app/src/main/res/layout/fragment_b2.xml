@@ -7,7 +7,7 @@
 
         <variable
             name="fragmentB2"
-            type="com.example.networkex.view.FragmentB2" />
+            type="com.example.networkex.legacy.view.FragmentB2" />
 
         <variable
             name="sampleData"
@@ -17,7 +17,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.FragmentB1">
+        tools:context=".legacy.view.FragmentB1">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
