@@ -1,13 +1,13 @@
-package com.example.networkex.kotlinx
+package com.example.networkex.gson.basic
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.networkex.R
-import com.example.networkex.databinding.ActivityMain2Binding
-import com.example.networkex.kotlinx.model.GitRepository
-import com.example.networkex.kotlinx.network.NetworkManager
+import com.example.networkex.databinding.ActivityMain3Binding
+import com.example.networkex.gson.basic.model.GitRepository
+import com.example.networkex.gson.basic.network.NetworkManager
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,13 +18,13 @@ import retrofit2.Response
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMain2Binding
+    private lateinit var binding: ActivityMain3Binding
 
     private val networkManager = NetworkManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main2)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main3)
         binding.mainActivity = this@MainActivity
     }
 
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 when (response.code()) {
                     200 -> {
                         val responseBody = response.body() as List<GitRepository>
-                        Timber.d("Kotlinx Response : $responseBody")
+                        Timber.d("Gson Response : $responseBody")
                     }
                     else -> {
                         Toast.makeText(this@MainActivity, response.code(), Toast.LENGTH_SHORT).show()
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         when(response.code()) {
             200 -> {
                 val responseBody = response.body() as List<GitRepository>
-                Timber.d("Kotlinx Response : $responseBody")
+                Timber.d("Gson Response : $responseBody")
             }
             else -> {
                 Toast.makeText(this@MainActivity, response.code(), Toast.LENGTH_SHORT).show()

@@ -1,9 +1,9 @@
-package com.example.networkex.kotlinx.network
+package com.example.networkex.gson.basic.network
 
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
-import com.example.networkex.kotlinx.model.GitRepository
+import com.example.networkex.gson.basic.model.GitRepository
 
 interface NetworkService {
     @GET("users/{user}/repos")
