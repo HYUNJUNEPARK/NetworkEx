@@ -66,6 +66,11 @@ class MainActivity : AppCompatActivity() {
     //execute
     fun onTest2ButtonClicked() = CoroutineScope(Dispatchers.IO + exceptionHandler).launch  {
         val response = networkManager.requestGithubInfo("ln-12").execute()
+
+        withContext(Dispatchers.Main) {
+            Toast.makeText(this@MainActivity, "${response.code()}", Toast.LENGTH_SHORT).show()
+        }
+
         when(response.code()) {
             200 -> {
                 val responseBody = response.body() as List<GitRepository>
