@@ -37,9 +37,8 @@ class MainActivity : AppCompatActivity() {
 
     //enqueue
     fun onTest1ButtonClicked() = CoroutineScope(Dispatchers.IO).launch {
-        withContext(Dispatchers.Main) {
-            loadingView.show(supportFragmentManager, null)
-        }
+        loadingView.show(supportFragmentManager, null)
+
         networkManager.requestGithubInfo("ln-12").enqueue(object : Callback<List<GitRepository>> {
             override fun onResponse(call: Call<List<GitRepository>>, response: Response<List<GitRepository>>) {
                 Timber.d("onResponse:$response")

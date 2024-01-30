@@ -59,7 +59,6 @@ class LoadingDialogFragment : DialogFragment() {
 
     companion object {
         @JvmStatic
-        @Synchronized
         fun newInstance(): LoadingDialogFragment {
             return LoadingDialogFragment().apply {
                 isCancelable = false //시스템 백버튼으로 종료 block
