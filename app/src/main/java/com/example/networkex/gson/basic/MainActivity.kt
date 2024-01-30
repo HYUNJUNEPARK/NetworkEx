@@ -40,24 +40,26 @@ class MainActivity : AppCompatActivity() {
         withContext(Dispatchers.Main) {
             loadingView.show(supportFragmentManager, null)
         }
-
         networkManager.requestGithubInfo("ln-12").enqueue(object : Callback<List<GitRepository>> {
             override fun onResponse(call: Call<List<GitRepository>>, response: Response<List<GitRepository>>) {
+                Timber.d("onResponse:$response")
                 loadingView.dismiss()
-                Toast.makeText(this@MainActivity, "${response.code()}", Toast.LENGTH_SHORT).show()
 
                 when (response.code()) {
                     200 -> {
                         val responseBody = response.body() as List<GitRepository>
                         Timber.d("Gson Response : $responseBody")
+                        Toast.makeText(this@MainActivity, "200", Toast.LENGTH_SHORT).show()
                     }
                     else -> {
-                        Toast.makeText(this@MainActivity, response.code(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, "${response.code()}", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
             override fun onFailure(call: Call<List<GitRepository>>, t: Throwable) {
+                Timber.d("onFailure:${t.message}")
                 loadingView.dismiss()
+                t.printStackTrace()
                 Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
             }
         })

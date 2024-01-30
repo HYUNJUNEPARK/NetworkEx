@@ -19,6 +19,7 @@ object NetworkProvider {
         readTimeout(10, TimeUnit.SECONDS)
         writeTimeout(10, TimeUnit.SECONDS)
         addInterceptor(NetworkInterceptor.httpLoggingInterceptor)
+        addInterceptor(NetworkInterceptor.httpRetryInterceptor)
         build()
     }
 }
